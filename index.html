@@ -163,7 +163,7 @@ input[type=color]{width:64px;height:46px;border:1.5px solid #e5e6f0;border-radiu
 <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 
 <script>
-/* ══ Vigilante de arranque: si algo falla, te lo muestra en pantalla ══ */
+/* ══ Vigilante de arranque (solo usa window, nunca variables de otros scripts) ══ */
 window.__BOOT__ = {};
 window.addEventListener('error', function (e) { window.__BOOT__.error = e.message || 'Error desconocido'; });
 setTimeout(function () {
@@ -172,7 +172,7 @@ setTimeout(function () {
   var msg;
   if (window.__BOOT__.error) msg = 'Error de JavaScript:<br><b>' + window.__BOOT__.error + '</b>';
   else if (!window.__APP_STARTED__) msg = 'No cargaron las librerías (CDN). Revisá tu conexión / bloqueador y recargá.';
-  else msg = 'Firebase no respondió. Revisá las credenciales pegadas al inicio del archivo.';
+  else msg = 'Firebase no respondió. Revisá las credenciales al inicio del script de la app.';
   box.innerHTML = '<div class="splash-boot" style="padding:24px;text-align:center">' +
     '<div style="font-size:44px">⚠️</div>' +
     '<p style="letter-spacing:0;font-size:15px;font-weight:700;max-width:420px;line-height:1.6">' + msg + '</p>' +
@@ -180,12 +180,13 @@ setTimeout(function () {
     '<button onclick="location.reload()" style="margin-top:14px;padding:12px 22px;border-radius:12px;background:#6d28d9;color:#fff;font-weight:700">Reintentar</button></div>';
 }, 12000);
 </script>
-<script type="text/babel" data-presets="react">
-const { useState, useEffect, useRef } = React;
-window.__APP_STARTED__ = true;
 
-/* 🔧 CONFIGURACIÓN — tus credenciales de VentiFree (van ACÁ adentro) */
-const firebaseConfig = {
+<script type="text/babel" data-presets="react">
+/* ═══════════════════════════════════════════════════════════════════
+   🔧 CONFIGURACIÓN — VAN DENTRO DE ESTE MISMO SCRIPT (no las muevas)
+   Pegá acá los 3 valores de tu index.html de VentiFree.
+   ═══════════════════════════════════════════════════════════════════ */
+onst firebaseConfig = {
   apiKey: "AIzaSyBc4DJiHoFp1gC9our2SGBek_AprkwdZ48",
   authDomain: "entradas-ac28c.firebaseapp.com",
   projectId: "entradas-ac28c",
@@ -193,10 +194,13 @@ const firebaseConfig = {
   messagingSenderId: "380401445493",
   appId: "1:380401445493:web:9058abc2adc1a18157e63c"
 };
-const MP_ACCESS_TOKEN = "APP_USR-2955434807999492-091915-855e6dc48a84e7b02a51fb8a9425c966-323912180";
-const ADMIN_EMAIL = "cepedademian2005@gmail.com";
+const MP_ACCESS_TOKEN = "APP_USR-2955434807999492-091915-855e6dc48a84e7b02a51fb8a9425c966-323912180";   // token de Mercado Pago
+const ADMIN_EMAIL    = "cepedademian2005@gmail.com";        // correo del administrador
+/* ═══════════════════════════════════════════════════════════════════ */
 
-/* Detectar credenciales sin reemplazar y proteger la inicialización */
+const { useState, useEffect, useRef } = React;
+window.__APP_STARTED__ = true;
+
 const CREDS_OK = !!(FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.apiKey.indexOf('PEGA_AQUI') === -1 &&
                     FIREBASE_CONFIG.projectId && FIREBASE_CONFIG.projectId.indexOf('PEGA_AQUI') === -1);
 let auth = null, db = null, FB_ERROR = '';
@@ -274,7 +278,7 @@ const Splash = ({ error }) => (
     {error && (
       <div style={{background:'#fee2e2', color:'#b91c1c', borderRadius:'14px', padding:'14px 16px', maxWidth:'340px', fontSize:'13px', fontWeight:'600', lineHeight:'1.5', textAlign:'center'}}>
         ⚠️ Firebase tardó demasiado en responder.<br/>
-        Revisá las credenciales al inicio del archivo y que la página esté en tu hosting (no abierta como file://). Si estás en un navegador de WhatsApp/Instagram, abrila en Chrome/Safari.
+        Revisá las credenciales al inicio del script y que la página esté en tu hosting (no abierta como file://). Si estás en un navegador de WhatsApp/Instagram, abrila en Chrome/Safari.
       </div>
     )}
   </div>
@@ -301,7 +305,6 @@ function QRImg({ value, size }) {
   return <img ref={ref} width={size} height={size} className="qr-img" alt="QR"/>;
 }
 
-/* Pantalla cuando faltan credenciales o Firebase no arranca */
 function CredsScreen({ fbError }) {
   return (
     <div className="login">
@@ -310,7 +313,7 @@ function CredsScreen({ fbError }) {
         <h1 style={{fontSize:'20px'}}>Configuración pendiente</h1>
         <p className="login-text" style={{textAlign:'left'}}>
           {fbError ? <span><b>Error de Firebase:</b> {fbError}<br/><br/></span> : null}
-          Abrí este archivo en un editor y completá el bloque <b>🔧 CONFIGURACIÓN</b> con los 3 valores de tu index.html de VentiFree:
+          Abrí este archivo en un editor y completá el bloque <b>🔧 CONFIGURACIÓN</b> (al inicio del script de la app) con los 3 valores de tu index.html de VentiFree:
           <br/><br/>
           1. <b>FIREBASE_CONFIG</b> (apiKey, authDomain, projectId…)<br/>
           2. <b>MP_ACCESS_TOKEN</b> (token de Mercado Pago)<br/>
@@ -327,7 +330,6 @@ function Login({ config }) {
   const login = () => {
     const prov = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(prov).catch(e => {
-      /* en navegadores de WhatsApp/Instagram el popup suele bloquearse → redirección */
       if (e.code === 'auth/popup-blocked' || e.code === 'auth/operation-not-supported-in-this-environment' || e.code === 'auth/cancelled-popup-request') {
         auth.signInWithRedirect(prov).catch(e2 => alert('Error al iniciar sesión: ' + e2.message));
       } else alert('Error al iniciar sesión: ' + e.message);
@@ -803,7 +805,6 @@ function App() {
     setTimeout(() => setToasts(t => t.filter(x => x.id !== id)), 3800);
   };
 
-  /* sesión con vigilancia: si Firebase no responde en 10s, avisamos */
   useEffect(() => {
     if (!auth) { setBooting(false); return; }
     let done = false;
@@ -812,7 +813,6 @@ function App() {
     return () => { clearTimeout(t); unsub(); };
   }, []);
 
-  /* configuración de la tienda (tiempo real) */
   useEffect(() => {
     if (!db) return;
     return db.collection('config').doc('store').onSnapshot(snap => {
@@ -820,7 +820,6 @@ function App() {
     }, () => {});
   }, []);
 
-  /* tema + título dinámico */
   useEffect(() => {
     const r = document.documentElement.style;
     r.setProperty('--primary', config.primaryColor || '#6d28d9');
@@ -828,7 +827,6 @@ function App() {
     document.title = config.title || 'Tienda Online';
   }, [config]);
 
-  /* catálogo */
   useEffect(() => {
     if (!db || !user) { setProductos([]); return; }
     return db.collection('productos').onSnapshot(snap => {
@@ -838,7 +836,6 @@ function App() {
     }, e => toast('Error al cargar productos: ' + e.message, 'error'));
   }, [user]);
 
-  /* pedidos del usuario */
   useEffect(() => {
     if (!db || !user) { setPedidos([]); return; }
     return db.collection('pedidos').where('userId', '==', user.uid).onSnapshot(snap => {
@@ -848,7 +845,6 @@ function App() {
     }, () => {});
   }, [user]);
 
-  /* todos los pedidos (admin) */
   useEffect(() => {
     if (!db || !isAdmin) { setTodosPedidos([]); return; }
     return db.collection('pedidos').onSnapshot(snap => {
@@ -860,7 +856,6 @@ function App() {
 
   useEffect(() => { if (!user) { setTab('tienda'); setComprando(null); } }, [user]);
 
-  /* verificación automática al volver de Mercado Pago */
   useEffect(() => {
     if (booting || !db) return;
     const params = new URLSearchParams(window.location.search);
