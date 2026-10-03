@@ -182,11 +182,7 @@ setTimeout(function () {
 </script>
 
 <script type="text/babel" data-presets="react">
-/* ═══════════════════════════════════════════════════════════════════
-   🔧 CONFIGURACIÓN — VAN DENTRO DE ESTE MISMO SCRIPT (no las muevas)
-   Pegá acá los 3 valores de tu index.html de VentiFree.
-   ═══════════════════════════════════════════════════════════════════ */
-onst firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyBc4DJiHoFp1gC9our2SGBek_AprkwdZ48",
   authDomain: "entradas-ac28c.firebaseapp.com",
   projectId: "entradas-ac28c",
@@ -196,8 +192,6 @@ onst firebaseConfig = {
 };
 const MP_ACCESS_TOKEN = "APP_USR-2955434807999492-091915-855e6dc48a84e7b02a51fb8a9425c966-323912180";   // token de Mercado Pago
 const ADMIN_EMAIL    = "cepedademian2005@gmail.com";        // correo del administrador
-/* ═══════════════════════════════════════════════════════════════════ */
-
 const { useState, useEffect, useRef } = React;
 window.__APP_STARTED__ = true;
 
