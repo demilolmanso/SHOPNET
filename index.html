@@ -352,7 +352,7 @@ function Header({ user, config, isAdmin }) {
   return (
     <header className="header">
       <div className="brand">
-        {config.logoUrl ? <img src={config.logoUrl} className="brand-logo" alt=""/> : <span className="brand-emoji">🛍️</span>}
+        {config.logoUrl ? <img src={config.logoUrl} className="brand-logo" alt=""/> : <span className="brand-emoji">🛒</span>}
         <span className="brand-name">{config.title}</span>
         {isAdmin && <span className="chip-admin">ADMIN</span>}
       </div>
