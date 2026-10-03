@@ -3,155 +3,285 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-<title>Tienda Online</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛒</text></svg>"/>
+<title>BloodLucyfer</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='40' y='5' width='20' height='90' fill='%23dc2626'/><rect x='15' y='65' width='70' height='18' fill='%23dc2626'/></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
-:root{ --primary:#6d28d9; --accent:#f59e0b; --bg:#f2f3f9; --text:#191a23; --muted:#7b7e8f;
-  --ok:#15803d; --okbg:#dcfce7; --warn:#b45309; --warnbg:#fef3c7; --err:#b91c1c; --errbg:#fee2e2; --used:#475569; --usedbg:#e2e8f0; }
+:root{
+  --primary:#dc2626;
+  --primary-dark:#7f1d1d;
+  --accent:#ef4444;
+  --bg:#050505;
+  --bg-card:#121212;
+  --bg-elev:#1a1a1a;
+  --border:#2a2a2a;
+  --text:#e5e5e5;
+  --muted:#7a7a7a;
+  --ok:#22c55e; --okbg:rgba(34,197,94,.15);
+  --warn:#eab308; --warnbg:rgba(234,179,8,.15);
+  --err:#ef4444; --errbg:rgba(239,68,68,.15);
+  --used:#94a3b8; --usedbg:rgba(148,163,184,.15);
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 input,textarea{font-family:inherit}
 img{display:block}
+
+/* ══════════ SPLASH / BOOT ══════════ */
 .splash,.splash-boot{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
-.splash p,.splash-boot p{font-size:12px;letter-spacing:3px;font-weight:700;color:var(--muted)}
-.spinner{width:44px;height:44px;border:4px solid #e5e6f2;border-top-color:var(--primary);border-radius:50%;animation:spin .9s linear infinite}
+.splash p,.splash-boot p{font-size:12px;letter-spacing:3px;font-weight:700;color:var(--primary);text-transform:uppercase}
+.spinner{width:44px;height:44px;border:4px solid #1a1a1a;border-top-color:var(--primary);border-radius:50%;animation:spin .9s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(160deg,var(--primary) 0%,#171226 135%)}
-.login-card{background:#fff;border-radius:26px;padding:34px 26px;width:100%;max-width:380px;text-align:center;box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
+
+/* ══════════ LOGIN ══════════ */
+.login{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;
+  background:radial-gradient(ellipse at top,#1a0000 0%,#050505 70%);
+}
+.login-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:26px;
+  padding:34px 26px;width:100%;max-width:380px;text-align:center;
+  box-shadow:0 30px 60px -20px rgba(220,38,38,.3),inset 0 0 40px rgba(127,29,29,.15);
+}
 .login-logo{width:74px;height:74px;object-fit:contain;margin:0 auto 12px;border-radius:16px}
-.login-emoji{font-size:56px;margin-bottom:8px}
-.login-card h1{font-size:26px;font-weight:800}
-.tagline{color:var(--muted);font-size:14px;margin-top:4px}
-.login-text{font-size:14px;color:#444;margin:16px 0 22px;line-height:1.5}
-.btn-google{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;border-radius:14px;background:#fff;border:1.5px solid #e3e4ee;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(20,20,40,.08)}
+.login-emoji{font-size:56px;margin-bottom:8px;color:var(--primary)}
+.login-card h1{
+  font-size:32px;font-weight:900;font-family:'Cinzel',serif;letter-spacing:3px;
+  color:var(--primary);text-shadow:0 0 15px rgba(220,38,38,.6);text-transform:uppercase;
+}
+.tagline{color:var(--muted);font-size:13px;margin-top:6px;letter-spacing:1px}
+.login-text{font-size:13.5px;color:#999;margin:16px 0 22px;line-height:1.6}
+.btn-google{
+  display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+  padding:14px;border-radius:14px;background:#0a0a0a;border:1.5px solid var(--primary);
+  font-weight:700;font-size:15px;color:var(--primary);
+  box-shadow:0 4px 20px rgba(220,38,38,.2);transition:all .15s;
+}
+.btn-google:hover{background:var(--primary-dark);color:#fff}
 .btn-google:active{transform:scale(.98)}
 .login-note{font-size:12px;color:var(--muted);margin-top:16px}
-.header{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid #ececf4}
+
+/* ══════════ HEADER ══════════ */
+.header{
+  position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;background:rgba(5,5,5,.92);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
 .brand{display:flex;align-items:center;gap:9px;min-width:0}
 .brand-logo{width:34px;height:34px;border-radius:9px;object-fit:contain}
-.brand-emoji{font-size:26px}
-.brand-name{font-weight:800;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.chip-admin{font-size:10px;font-weight:800;background:var(--primary);color:#fff;padding:3px 8px;border-radius:99px;letter-spacing:1px}
+.brand-emoji{font-size:26px;color:var(--primary)}
+.brand-name{
+  font-weight:900;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  font-family:'Cinzel',serif;letter-spacing:1.5px;color:var(--primary);
+  text-shadow:0 0 8px rgba(220,38,38,.5);
+}
+.chip-admin{font-size:10px;font-weight:800;background:var(--primary);color:#fff;padding:3px 8px;border-radius:99px;letter-spacing:1px;box-shadow:0 0 8px var(--primary)}
 .user-menu{position:relative}
-.avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.15);background:#e9e9f2}
-.dropdown{position:absolute;right:0;top:48px;background:#fff;border-radius:16px;box-shadow:0 18px 40px -12px rgba(0,0,0,.25);padding:14px;width:230px;z-index:60;animation:pop .15s ease}
+.avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--primary);box-shadow:0 0 10px rgba(220,38,38,.4);background:#1a1a1a}
+.dropdown{
+  position:absolute;right:0;top:48px;background:var(--bg-card);
+  border:1px solid var(--border);border-radius:16px;
+  box-shadow:0 18px 40px -12px rgba(0,0,0,.7);padding:14px;width:230px;z-index:60;animation:pop .15s ease;
+}
 @keyframes pop{from{opacity:0;transform:translateY(-6px)}}
-.dd-name{font-weight:700;font-size:14px}
+.dd-name{font-weight:700;font-size:14px;color:var(--text)}
 .dd-mail{font-size:12px;color:var(--muted);margin:2px 0 10px;word-break:break-all}
-.dd-logout{width:100%;padding:10px;border-radius:10px;background:var(--errbg);color:var(--err);font-weight:700;font-size:13px}
+.dd-logout{width:100%;padding:10px;border-radius:10px;background:var(--errbg);color:var(--err);font-weight:700;font-size:13px;border:1px solid rgba(239,68,68,.3)}
+
+/* ══════════ APP / BANNER / HERO ══════════ */
 .app{max-width:560px;margin:0 auto;padding:16px 16px 110px}
-.banner{background:#fff7e0;border:1px solid #f5dfa8;color:#7a5b12;border-radius:12px;padding:10px 14px;font-size:13px;font-weight:600;margin-bottom:14px}
-.hero{background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 175%);border-radius:20px;padding:22px 20px;color:#fff;margin-bottom:18px;box-shadow:0 14px 30px -14px var(--primary)}
-.hero h2{font-size:21px;font-weight:800;margin-bottom:6px}
-.hero p{font-size:13.5px;opacity:.92;line-height:1.5}
-.section-title{font-size:17px;font-weight:800;margin:6px 0 12px}
-.empty{text-align:center;color:var(--muted);font-size:14px;padding:44px 20px;background:#fff;border-radius:16px;line-height:1.8}
+.banner{
+  background:rgba(127,29,29,.3);border:1px solid var(--primary-dark);color:var(--accent);
+  border-radius:12px;padding:10px 14px;font-size:13px;font-weight:600;margin-bottom:14px;
+}
+.hero{
+  background:linear-gradient(135deg,#0a0000 0%,#1a0505 60%,#2a0a0a 100%);
+  border:1px solid var(--primary-dark);border-radius:20px;padding:22px 20px;color:#fff;margin-bottom:18px;
+  box-shadow:0 14px 30px -14px rgba(220,38,38,.5),inset 0 0 30px rgba(127,29,29,.2);
+}
+.hero h2{
+  font-size:24px;font-weight:900;margin-bottom:6px;
+  font-family:'Cinzel',serif;letter-spacing:2px;color:var(--primary);
+  text-shadow:0 0 12px rgba(220,38,38,.7);
+}
+.hero p{font-size:13.5px;color:#aaa;line-height:1.5}
+.section-title{
+  font-size:16px;font-weight:900;margin:6px 0 12px;
+  font-family:'Cinzel',serif;letter-spacing:2px;color:var(--primary);
+  text-shadow:0 0 6px rgba(220,38,38,.4);text-transform:uppercase;
+}
+.empty{text-align:center;color:var(--muted);font-size:14px;padding:44px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;line-height:1.8}
+
+/* ══════════ PRODUCTS ══════════ */
 .prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:379px){.prod-grid{grid-template-columns:1fr}}
-.prod-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 14px rgba(25,26,35,.06);cursor:pointer;transition:transform .12s}
+.prod-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:16px;overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.5);cursor:pointer;transition:all .2s;
+}
+.prod-card:hover{border-color:var(--primary);box-shadow:0 4px 30px rgba(220,38,38,.3)}
 .prod-card:active{transform:scale(.98)}
-.prod-img-wrap{position:relative;aspect-ratio:1/.78;background:#eee}
+.prod-img-wrap{position:relative;aspect-ratio:1/.78;background:#0a0a0a}
 .prod-img{width:100%;height:100%;object-fit:cover}
-.prod-img.ph{display:flex;align-items:center;justify-content:center;font-size:40px;background:linear-gradient(135deg,#eceafc,#f6efdc)}
-.nostock{position:absolute;top:8px;left:8px;background:rgba(15,15,20,.78);color:#fff;font-size:10px;font-weight:700;padding:4px 9px;border-radius:99px;letter-spacing:.5px}
+.prod-img.ph{display:flex;align-items:center;justify-content:center;font-size:40px;background:linear-gradient(135deg,#1a1a1a,#0a0a0a);color:var(--primary)}
+.nostock{position:absolute;top:8px;left:8px;background:rgba(5,5,5,.9);color:var(--err);font-size:10px;font-weight:700;padding:4px 9px;border-radius:99px;letter-spacing:.5px;border:1px solid var(--primary-dark)}
 .prod-body{padding:10px 12px 12px}
-.prod-name{font-weight:700;font-size:14px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.chip{display:inline-block;margin-top:5px;font-size:10.5px;font-weight:700;color:var(--primary);background:rgba(0,0,0,.05);padding:3px 8px;border-radius:99px}
+.prod-name{font-weight:700;font-size:14px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;color:var(--text)}
+.chip{display:inline-block;margin-top:5px;font-size:10.5px;font-weight:700;color:var(--accent);background:rgba(220,38,38,.1);padding:3px 8px;border-radius:99px;border:1px solid var(--primary-dark)}
 .prod-foot{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
-.price{font-weight:800;font-size:15px}
+.price{font-weight:800;font-size:15px;color:var(--primary)}
 .stock-lbl{font-size:11px;color:var(--muted);font-weight:600}
-.btn{display:block;width:100%;padding:14px;border-radius:14px;font-weight:800;font-size:15px;text-align:center;transition:transform .1s}
+
+/* ══════════ BUTTONS ══════════ */
+.btn{display:block;width:100%;padding:14px;border-radius:14px;font-weight:800;font-size:15px;text-align:center;transition:all .1s}
 .btn:active{transform:scale(.98)}
-.btn:disabled{opacity:.6;pointer-events:none}
-.btn-primary{background:var(--primary);color:#fff;box-shadow:0 10px 22px -10px var(--primary)}
-.btn-ghost{background:#f1f2f8;color:#4a4c5e;margin-top:9px}
-.btn-mini{margin-top:9px;font-size:12px;font-weight:700;background:var(--primary);color:#fff;padding:8px 12px;border-radius:10px}
-.overlay{position:fixed;inset:0;background:rgba(12,12,20,.55);backdrop-filter:blur(3px);display:flex;align-items:flex-end;justify-content:center;z-index:100;animation:fade .18s ease}
+.btn:disabled{opacity:.5;pointer-events:none}
+.btn-primary{
+  background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);
+  color:#fff;box-shadow:0 10px 22px -10px var(--primary),0 0 15px rgba(220,38,38,.3);
+}
+.btn-primary:hover{box-shadow:0 10px 30px -10px var(--primary),0 0 25px rgba(220,38,38,.5)}
+.btn-ghost{background:#1a1a1a;color:var(--muted);margin-top:9px;border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--primary);color:var(--text)}
+.btn-mini{margin-top:9px;font-size:12px;font-weight:700;background:var(--primary-dark);color:#fff;padding:8px 12px;border-radius:10px;border:1px solid var(--primary)}
+
+/* ══════════ OVERLAY / SHEET ══════════ */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);display:flex;align-items:flex-end;justify-content:center;z-index:100;animation:fade .18s ease}
 @keyframes fade{from{opacity:0}}
-.sheet{background:#fff;width:100%;max-width:560px;border-radius:26px 26px 0 0;padding:20px 20px calc(24px + env(safe-area-inset-bottom));max-height:90vh;overflow-y:auto;animation:up .22s cubic-bezier(.2,.8,.3,1)}
+.sheet{
+  background:var(--bg-card);border-top:1px solid var(--primary-dark);
+  width:100%;max-width:560px;border-radius:26px 26px 0 0;
+  padding:20px 20px calc(24px + env(safe-area-inset-bottom));max-height:90vh;overflow-y:auto;
+  animation:up .22s cubic-bezier(.2,.8,.3,1);
+}
 @keyframes up{from{transform:translateY(40px);opacity:.6}}
-@media(min-width:600px){.overlay{align-items:center;padding:20px}.sheet{border-radius:24px}}
-.sheet-handle{width:44px;height:5px;border-radius:99px;background:#e1e2ec;margin:0 auto 14px}
-.sheet-title{font-size:18px;font-weight:800;margin-bottom:14px}
+@media(min-width:600px){.overlay{align-items:center;padding:20px}.sheet{border-radius:24px;border:1px solid var(--border)}}
+.sheet-handle{width:44px;height:5px;border-radius:99px;background:var(--primary-dark);margin:0 auto 14px}
+.sheet-title{font-size:18px;font-weight:800;margin-bottom:14px;color:var(--primary);font-family:'Cinzel',serif;letter-spacing:1px}
 label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin:12px 0 6px;text-transform:uppercase;letter-spacing:.5px}
-.input{width:100%;padding:13px 14px;border:1.5px solid #e5e6f0;border-radius:12px;font-size:15px;background:#fafaff;color:var(--text)}
-.input:focus{outline:none;border-color:var(--primary);background:#fff}
+.input{
+  width:100%;padding:13px 14px;border:1.5px solid var(--border);border-radius:12px;
+  font-size:15px;background:#0a0a0a;color:var(--text);
+}
+.input:focus{outline:none;border-color:var(--primary);background:#050505;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
 textarea.input{resize:vertical}
 .input.mini{width:86px;text-align:center}
-.buy-resumen{display:flex;justify-content:space-between;align-items:center;background:#f7f7fc;border-radius:12px;padding:12px 14px;margin-bottom:6px}
-.buy-resumen b{font-size:14px}
+
+.buy-resumen{display:flex;justify-content:space-between;align-items:center;background:#0a0a0a;border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:6px}
+.buy-resumen b{font-size:14px;color:var(--text)}
 .buy-resumen .price{color:var(--primary)}
-.det-img{width:100%;border-radius:16px;margin-bottom:14px;max-height:230px;object-fit:cover}
-.det-img.ph{height:150px;display:flex;align-items:center;justify-content:center;font-size:52px;background:linear-gradient(135deg,#eceafc,#f6efdc)}
+
+.det-img{width:100%;border-radius:16px;margin-bottom:14px;max-height:230px;object-fit:cover;border:1px solid var(--border)}
+.det-img.ph{height:150px;display:flex;align-items:center;justify-content:center;font-size:52px;background:linear-gradient(135deg,#1a1a1a,#0a0a0a);color:var(--primary)}
 .det-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:6px}
-.det-head h3{font-size:18px;font-weight:800}
-.det-price{white-space:nowrap;color:var(--primary)}
-.det-desc{font-size:13.5px;color:#555;line-height:1.55;margin:10px 0}
+.det-head h3{font-size:18px;font-weight:800;color:var(--text)}
+.det-price{white-space:nowrap;color:var(--primary);font-weight:800;font-size:18px}
+.det-desc{font-size:13.5px;color:#999;line-height:1.55;margin:10px 0}
 .det-stock{font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:14px}
-.pedido-card{display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:14px;margin-bottom:10px;box-shadow:0 4px 14px rgba(25,26,35,.05);cursor:pointer}
+
+/* ══════════ PEDIDOS / TICKET ══════════ */
+.pedido-card{
+  display:flex;align-items:center;gap:12px;background:var(--bg-card);
+  border:1px solid var(--border);border-radius:16px;padding:14px;margin-bottom:10px;
+  box-shadow:0 4px 20px rgba(0,0,0,.4);cursor:pointer;transition:all .15s;
+}
+.pedido-card:hover{border-color:var(--primary-dark)}
 .pedido-main{flex:1;min-width:0}
-.pedido-nom{font-weight:700;font-size:14.5px}
+.pedido-nom{font-weight:700;font-size:14.5px;color:var(--text)}
 .pedido-meta{font-size:12px;color:var(--muted);margin:3px 0 7px}
-.pedido-qr{flex-shrink:0;background:#fff;border:1px solid #ececf4;border-radius:10px;padding:4px}
+.pedido-qr{flex-shrink:0;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:4px}
 .qr-img{image-rendering:pixelated;border-radius:4px;background:#fff}
 .badge{display:inline-block;font-size:11px;font-weight:800;padding:4px 10px;border-radius:99px}
-.badge-pend{background:var(--warnbg);color:var(--warn)}
-.badge-rech{background:var(--errbg);color:var(--err)}
-.badge-ok{background:var(--okbg);color:var(--ok)}
-.badge-used{background:var(--usedbg);color:var(--used)}
+.badge-pend{background:var(--warnbg);color:var(--warn);border:1px solid rgba(234,179,8,.3)}
+.badge-rech{background:var(--errbg);color:var(--err);border:1px solid rgba(239,68,68,.3)}
+.badge-ok{background:var(--okbg);color:var(--ok);border:1px solid rgba(34,197,94,.3)}
+.badge-used{background:var(--usedbg);color:var(--used);border:1px solid rgba(148,163,184,.3)}
+
 .ticket-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.ticket-store{font-size:12px;font-weight:800;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
-.ticket-prod{font-size:19px;font-weight:800;margin-bottom:14px}
-.ticket-qr{display:flex;justify-content:center;padding:16px;background:#fafafd;border:1.5px dashed #d9dae8;border-radius:16px;margin-bottom:12px}
+.ticket-store{font-size:12px;font-weight:800;letter-spacing:2px;color:var(--muted);text-transform:uppercase;font-family:'Cinzel',serif}
+.ticket-prod{font-size:19px;font-weight:800;margin-bottom:14px;color:var(--text)}
+.ticket-qr{display:flex;justify-content:center;padding:16px;background:#0a0a0a;border:1.5px dashed var(--primary-dark);border-radius:16px;margin-bottom:12px}
 .qr-pending{padding:36px 12px;text-align:center;color:var(--muted);font-weight:600;font-size:14px}
 .ticket-id{text-align:center;font-size:11px;color:var(--muted);font-family:monospace;letter-spacing:.5px;margin-bottom:14px;word-break:break-all}
-.ticket-data{background:#f7f7fc;border-radius:14px;padding:6px 14px;margin-bottom:16px}
-.trow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #e9eaf3;font-size:13.5px}
+.ticket-data{background:#0a0a0a;border:1px solid var(--border);border-radius:14px;padding:6px 14px;margin-bottom:16px}
+.trow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13.5px}
 .trow:last-child{border:none}
 .trow span{color:var(--muted)}
-.trow b{text-align:right;word-break:break-word}
+.trow b{text-align:right;word-break:break-word;color:var(--text)}
+
+/* ══════════ ADMIN ══════════ */
 .subtabs{display:flex;gap:8px;margin-bottom:14px}
-.subtab{flex:1;padding:11px;border-radius:12px;background:#fff;font-weight:700;font-size:13px;color:var(--muted);box-shadow:0 3px 10px rgba(25,26,35,.05)}
-.subtab.active{background:var(--primary);color:#fff}
-.card{background:#fff;border-radius:18px;box-shadow:0 4px 14px rgba(25,26,35,.05);margin-bottom:16px;overflow:hidden}
+.subtab{flex:1;padding:11px;border-radius:12px;background:var(--bg-card);font-weight:700;font-size:13px;color:var(--muted);box-shadow:0 3px 10px rgba(0,0,0,.4);border:1px solid var(--border);transition:all .15s}
+.subtab.active{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 0 15px rgba(220,38,38,.4)}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:18px;box-shadow:0 4px 20px rgba(0,0,0,.4);margin-bottom:16px;overflow:hidden}
 .card.pad{padding:18px}
-.card-title{font-size:15.5px;font-weight:800;margin-bottom:6px}
+.card-title{font-size:15.5px;font-weight:800;margin-bottom:6px;color:var(--primary);font-family:'Cinzel',serif;letter-spacing:1px}
 .hint{font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:8px}
 .color-row{display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap}
-input[type=color]{width:64px;height:46px;border:1.5px solid #e5e6f0;border-radius:12px;background:#fafaff;padding:4px}
-.list-title{font-size:14px;font-weight:800;margin:18px 0 10px;color:#3c3e4e}
-.admin-row{display:flex;align-items:center;gap:10px;background:#fff;border-radius:14px;padding:11px 12px;margin-bottom:8px;box-shadow:0 3px 10px rgba(25,26,35,.05)}
-.admin-thumb{width:44px;height:44px;border-radius:10px;object-fit:cover;background:#f0f0f6;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:20px}
+input[type=color]{width:64px;height:46px;border:1.5px solid var(--border);border-radius:12px;background:#0a0a0a;padding:4px}
+.list-title{font-size:14px;font-weight:800;margin:18px 0 10px;color:var(--accent);font-family:'Cinzel',serif;letter-spacing:1px;text-transform:uppercase}
+.admin-row{display:flex;align-items:center;gap:10px;background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:11px 12px;margin-bottom:8px;box-shadow:0 3px 10px rgba(0,0,0,.3)}
+.admin-thumb{width:44px;height:44px;border-radius:10px;object-fit:cover;background:#0a0a0a;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:20px;border:1px solid var(--border);color:var(--primary)}
 .admin-info{flex:1;min-width:0}
-.admin-nom{font-weight:700;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.admin-nom{font-weight:700;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text)}
 .admin-meta{font-size:11.5px;color:var(--muted);margin-top:2px}
-.btn-del{flex-shrink:0;width:36px;height:36px;border-radius:10px;background:var(--errbg);color:var(--err);font-size:15px;display:flex;align-items:center;justify-content:center}
-.scanner-box{position:relative;border-radius:18px;overflow:hidden;background:#0d0d14;margin-bottom:14px;min-height:230px}
+.btn-del{flex-shrink:0;width:36px;height:36px;border-radius:10px;background:var(--errbg);color:var(--err);font-size:15px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(239,68,68,.3)}
+
+/* ══════════ SCANNER ══════════ */
+.scanner-box{position:relative;border-radius:18px;overflow:hidden;background:#0d0d14;border:1px solid var(--primary-dark);margin-bottom:14px;min-height:230px}
 .scanner-video{width:100%;display:block;max-height:56vh;object-fit:cover}
 .scanner-video.hidden{display:none}
-.scanner-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#8b8da3;font-size:14px;text-align:center;line-height:2}
+.scanner-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);font-size:14px;text-align:center;line-height:2}
 .scan-result{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:20px;text-align:center;color:#fff}
 .r-ok{background:rgba(21,128,61,.93)}
 .r-usada{background:rgba(71,85,105,.94)}
 .r-pendiente{background:rgba(180,83,9,.93)}
 .r-invalido{background:rgba(185,28,28,.93)}
-.scan-titulo{font-size:20px;font-weight:800}
+.scan-titulo{font-size:20px;font-weight:800;font-family:'Cinzel',serif;letter-spacing:1px}
 .scan-msg{font-size:13.5px;opacity:.95}
 .scan-det{font-size:12px;background:rgba(255,255,255,.16);padding:6px 12px;border-radius:99px;margin-top:6px}
-.bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:560px;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-top:1px solid #ececf4;display:flex;z-index:50;padding:7px 6px calc(9px + env(safe-area-inset-bottom))}
-.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;color:#9a9db0;font-size:10.5px;font-weight:700;border-radius:12px}
-.nav-item.active{color:var(--primary)}
+
+/* ══════════ BOTTOM NAV ══════════ */
+.bottom-nav{
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:560px;
+  background:rgba(5,5,5,.96);backdrop-filter:blur(14px);border-top:1px solid var(--border);
+  display:flex;z-index:50;padding:7px 6px calc(9px + env(safe-area-inset-bottom));
+}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;color:var(--muted);font-size:10.5px;font-weight:700;border-radius:12px;transition:all .15s}
+.nav-item.active{color:var(--primary);text-shadow:0 0 8px rgba(220,38,38,.5)}
 .nav-item svg{width:23px;height:23px}
+
+/* ══════════ TOASTS ══════════ */
 .toast-wrap{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:300;display:flex;flex-direction:column;gap:8px;width:min(92vw,420px)}
-.toast{color:#fff;font-size:13.5px;font-weight:600;padding:13px 16px;border-radius:13px;box-shadow:0 14px 30px -10px rgba(0,0,0,.4);animation:pop .2s ease;line-height:1.4}
-.t-success{background:var(--ok)} .t-error{background:var(--err)} .t-info{background:#1d1e2a}
+.toast{color:#fff;font-size:13.5px;font-weight:600;padding:13px 16px;border-radius:13px;box-shadow:0 14px 30px -10px rgba(0,0,0,.7);animation:pop .2s ease;line-height:1.4;border:1px solid transparent}
+.t-success{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
+.t-error{background:var(--errbg);border-color:var(--err);color:var(--err)}
+.t-info{background:#121212;border-color:var(--border);color:var(--text)}
+
+/* ══════════ VORTEX BACKGROUND ══════════ */
+.vortex-bg{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:#050505;
+}
+
+/* Scrollbar custom */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#0a0a0a}
+::-webkit-scrollbar-thumb{background:var(--primary-dark);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--primary)}
 </style>
 </head>
 <body>
-<div id="root"><div class="splash-boot"><div class="spinner"></div><p>VERIFICANDO SESIÓN...</p></div></div>
+<div id="root"><div class="splash-boot"><div class="spinner"></div><p>ABRIENDO LAS PUERTAS DEL INFIERNO...</p></div></div>
 
 <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
@@ -163,7 +293,7 @@ input[type=color]{width:64px;height:46px;border:1.5px solid #e5e6f0;border-radiu
 <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 
 <script>
-/* ══ Vigilante de arranque (solo usa window, nunca variables de otros scripts) ══ */
+/* ══ Vigilante de arranque ══ */
 window.__BOOT__ = {};
 window.addEventListener('error', function (e) { window.__BOOT__.error = e.message || 'Error desconocido'; });
 setTimeout(function () {
@@ -177,7 +307,7 @@ setTimeout(function () {
     '<div style="font-size:44px">⚠️</div>' +
     '<p style="letter-spacing:0;font-size:15px;font-weight:700;max-width:420px;line-height:1.6">' + msg + '</p>' +
     '<p style="letter-spacing:0;font-size:13px;color:#7b7e8f;max-width:420px;line-height:1.6">Abrí la consola (F12 → Console) para más detalle.<br>Si abriste el archivo con doble clic (file://), subilo a tu hosting: Firebase exige http/https.</p>' +
-    '<button onclick="location.reload()" style="margin-top:14px;padding:12px 22px;border-radius:12px;background:#6d28d9;color:#fff;font-weight:700">Reintentar</button></div>';
+    '<button onclick="location.reload()" style="margin-top:14px;padding:12px 22px;border-radius:12px;background:#dc2626;color:#fff;font-weight:700">Reintentar</button></div>';
 }, 12000);
 </script>
 
@@ -190,8 +320,8 @@ const firebaseConfig = {
   messagingSenderId: "380401445493",
   appId: "1:380401445493:web:9058abc2adc1a18157e63c"
 };
-const MP_ACCESS_TOKEN = "APP_USR-2955434807999492-091915-855e6dc48a84e7b02a51fb8a9425c966-323912180";   // token de Mercado Pago
-const ADMIN_EMAIL    = "cepedademian2005@gmail.com";        // correo del administrador
+const MP_ACCESS_TOKEN = "APP_USR-2955434807999492-091915-855e6dc48a84e7b02a51fb8a9425c966-323912180";
+const ADMIN_EMAIL    = "cepedademian2005@gmail.com";
 const FIREBASE_CONFIG = firebaseConfig;
 const { useState, useEffect, useRef } = React;
 window.__APP_STARTED__ = true;
@@ -208,10 +338,10 @@ try {
 
 const QR_PREFIX = 'VENTISHOP:';
 const DEFAULT_CONFIG = {
-  title: 'VentiShop', tagline: 'Tu tienda online de confianza',
-  heroTitle: '¡Bienvenido!',
-  heroText: 'Explorá el catálogo, elegí tus productos y pagá seguro con Mercado Pago.',
-  logoUrl: '', primaryColor: '#6d28d9', accentColor: '#f59e0b',
+  title: 'BloodLucyfer', tagline: 'Ad portas Inferni',
+  heroTitle: 'Ave Sanguis',
+  heroText: 'In nomine Dei nostri Satanas Luciferi Excelsi. Explorá el catálogo prohibido.',
+  logoUrl: '', primaryColor: '#dc2626', accentColor: '#ef4444',
   currency: 'ARS', currencySymbol: '$', banner: ''
 };
 
@@ -255,38 +385,173 @@ function buildPreferencia({ titulo, precio, ref, nombre, dni, email, config }) {
     items: [{ title: titulo, quantity: 1, unit_price: Number(precio), currency_id: (config.currency || 'ARS') }],
     payer: { name: nombre, identification: { type:'DNI', number: String(dni).trim() }, email: email },
     external_reference: ref,
-    statement_descriptor: (config.title || 'TIENDA').toUpperCase().slice(0, 14),
+    statement_descriptor: (config.title || 'BLOODLUCYFER').toUpperCase().slice(0, 14),
     back_urls: { success: base, pending: base, failure: base },
     auto_return: 'approved'
   };
 }
 
-const IconBag  = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8h12l-1.2 12.2a1 1 0 01-1 .8H8.2a1 1 0 01-1-.8L6 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>);
-const IconBox  = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 3h12v18l-2-1.6L14 21l-2-1.6L10 21l-2-1.6L6 21V3z"/><path d="M9.5 8h5M9.5 12h5"/></svg>);
-const IconGear = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.8M12 18.7v2.8M2.5 12h2.8M18.7 12h2.8M5.3 5.3l2 2M16.7 16.7l2 2M18.7 5.3l-2 2M7.3 16.7l-2 2"/></svg>);
-const IconScan = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 8V6a2 2 0 012-2h2M16 4h2a2 2 0 012 2v2M20 16v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2"/><path d="M4 12h16"/></svg>);
+/* ══════════ SVG CRUZ INVERTIDA (Satanic) ══════════ */
+const InvertedCross = ({ size = 24, color = '#dc2626' }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="Cruz invertida">
+    <defs>
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="2" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+    <rect x="40" y="5" width="20" height="90" fill={color} filter="url(#glow)"/>
+    <rect x="15" y="65" width="70" height="18" fill={color} filter="url(#glow)"/>
+  </svg>
+);
 
+/* ══════════ TYPHOGRAPHY VORTEX (Optimizado, 30 FPS, 10 anillos) ══════════ */
+function VortexBackground() {
+  const canvasRef = useRef(null);
+  const rafRef = useRef(null);
+  const wordsRef = useRef([
+    "IN NOMINE DEI NOSTRI SATANAS LUCIFERI EXCELSI",
+    "AVE SATANAS", "REX MUNDI", "INFERNUM", "ABYSSUS",
+    "TENEBRAE", "MORS AETERNA", "IGNIS INFERNALIS",
+    "SANGUIS", "CRUOR", "LUCIFER", "BAPHOMET",
+    "AD PORTAS INFERI", "NOX AETERNA", "DIES IRAE"
+  ]);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d', { alpha: false });
+    let width, height, MAX_RADIUS;
+    const rings = [];
+    const NUM_RINGS = 10;
+    const words = wordsRef.current;
+
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      MAX_RADIUS = Math.sqrt(width * width + height * height) / 2;
+      rings.length = 0;
+      for (let i = 0; i < NUM_RINGS; i++) {
+        rings.push({
+          radius: (MAX_RADIUS / NUM_RINGS) * i,
+          rotation: Math.random() * Math.PI * 2,
+          speed: (Math.random() * 0.0012 + 0.0004) * (Math.random() > 0.5 ? 1 : -1),
+          wordIndex: Math.floor(Math.random() * words.length),
+          opacity: Math.max(0.15, 1 - (i / NUM_RINGS) * 0.85)
+        });
+      }
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    let lastTime = 0;
+    const FPS_INTERVAL = 1000 / 30; // 30 FPS — balance visual/rendimiento
+
+    function draw(currentTime) {
+      rafRef.current = requestAnimationFrame(draw);
+      const elapsed = currentTime - lastTime;
+      if (elapsed < FPS_INTERVAL) return;
+      lastTime = currentTime - (elapsed % FPS_INTERVAL);
+
+      // Fondo negro profundo
+      ctx.fillStyle = '#050505';
+      ctx.fillRect(0, 0, width, height);
+
+      // Viñeta radial para dar sensación de túnel
+      const grad = ctx.createRadialGradient(width/2, height/2, 0, width/2, height/2, MAX_RADIUS);
+      grad.addColorStop(0, 'rgba(30,0,0,0.0)');
+      grad.addColorStop(0.7, 'rgba(5,5,5,0.4)');
+      grad.addColorStop(1, 'rgba(5,5,5,0.95)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, width, height);
+
+      const cx = width / 2;
+      const cy = height / 2;
+
+      ctx.font = 'bold 14px "Inter", monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      for (let r = 0; r < rings.length; r++) {
+        const ring = rings[r];
+        ring.radius += 0.7;
+        ring.rotation += ring.speed;
+
+        if (ring.radius > MAX_RADIUS) {
+          ring.radius = 5;
+          ring.wordIndex = Math.floor(Math.random() * words.length);
+        }
+
+        if (ring.radius < 15) continue;
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(ring.rotation);
+
+        const word = words[ring.wordIndex];
+        const sep = '  †  ';
+        const text = word + sep + word + sep;
+        const radius = ring.radius;
+        const charAngle = (Math.PI * 2) / text.length;
+        const alpha = ring.opacity;
+
+        // Glow rojo sangre
+        ctx.shadowColor = `rgba(220, 38, 38, ${alpha})`;
+        ctx.shadowBlur = 10;
+        ctx.fillStyle = `rgba(220, 38, 38, ${alpha})`;
+
+        for (let i = 0; i < text.length; i++) {
+          ctx.save();
+          ctx.rotate(i * charAngle);
+          ctx.translate(0, -radius);
+          ctx.rotate(Math.PI / 2);
+          ctx.fillText(text[i], 0, 0);
+          ctx.restore();
+        }
+
+        ctx.restore();
+      }
+    }
+
+    rafRef.current = requestAnimationFrame(draw);
+
+    return () => {
+      window.removeEventListener('resize', resize);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="vortex-bg"/>;
+}
+
+/* ══════════ COMPONENTES ══════════ */
 const Splash = ({ error }) => (
   <div className="splash">
-    <div className="spinner"></div>
-    <p>VERIFICANDO SESIÓN...</p>
+    <InvertedCross size={56}/>
+    <p>ABRIENDO LAS PUERTAS DEL INFIELO...</p>
     {error && (
-      <div style={{background:'#fee2e2', color:'#b91c1c', borderRadius:'14px', padding:'14px 16px', maxWidth:'340px', fontSize:'13px', fontWeight:'600', lineHeight:'1.5', textAlign:'center'}}>
+      <div style={{background:'rgba(239,68,68,.15)', color:'#ef4444', borderRadius:'14px', padding:'14px 16px', maxWidth:'340px', fontSize:'13px', fontWeight:'600', lineHeight:'1.5', textAlign:'center', border:'1px solid rgba(239,68,68,.3)'}}>
         ⚠️ Firebase tardó demasiado en responder.<br/>
         Revisá las credenciales al inicio del script y que la página esté en tu hosting (no abierta como file://). Si estás en un navegador de WhatsApp/Instagram, abrila en Chrome/Safari.
       </div>
     )}
   </div>
 );
+
 const Toasts = ({ toasts }) => (
   <div className="toast-wrap">{toasts.map(t => <div key={t.id} className={'toast t-' + t.type}>{t.msg}</div>)}</div>
 );
+
 const Badge = ({ estado }) => {
   const map = { pendiente:['badge-pend','⏳ Pendiente'], rechazado:['badge-rech','✖ Rechazado'],
                 aprobado:['badge-ok','✔ Pagado'], entregado:['badge-used','📦 Entregado'] };
   const m = map[estado] || map.pendiente;
   return <span className={'badge ' + m[0]}>{m[1]}</span>;
 };
+
 function QRImg({ value, size }) {
   const ref = useRef(null);
   useEffect(() => {
@@ -302,22 +567,25 @@ function QRImg({ value, size }) {
 
 function CredsScreen({ fbError }) {
   return (
-    <div className="login">
-      <div className="login-card">
-        <div className="login-emoji">🔧</div>
-        <h1 style={{fontSize:'20px'}}>Configuración pendiente</h1>
-        <p className="login-text" style={{textAlign:'left'}}>
-          {fbError ? <span><b>Error de Firebase:</b> {fbError}<br/><br/></span> : null}
-          Abrí este archivo en un editor y completá el bloque <b>🔧 CONFIGURACIÓN</b> (al inicio del script de la app) con los 3 valores de tu index.html de VentiFree:
-          <br/><br/>
-          1. <b>FIREBASE_CONFIG</b> (apiKey, authDomain, projectId…)<br/>
-          2. <b>MP_ACCESS_TOKEN</b> (token de Mercado Pago)<br/>
-          3. <b>ADMIN_EMAIL</b> (correo del administrador)
-          <br/><br/>
-          Después subí el archivo a tu hosting: Firebase no funciona con doble clic (file://).
-        </p>
+    <>
+      <VortexBackground/>
+      <div className="login">
+        <div className="login-card">
+          <div className="login-emoji"><InvertedCross size={56}/></div>
+          <h1 style={{fontSize:'20px'}}>Configuración pendiente</h1>
+          <p className="login-text" style={{textAlign:'left'}}>
+            {fbError ? <span><b>Error de Firebase:</b> {fbError}<br/><br/></span> : null}
+            Abrí este archivo en un editor y completá el bloque <b>🔧 CONFIGURACIÓN</b> con los 3 valores de tu index.html de VentiFree:
+            <br/><br/>
+            1. <b>FIREBASE_CONFIG</b> (apiKey, authDomain, projectId…)<br/>
+            2. <b>MP_ACCESS_TOKEN</b> (token de Mercado Pago)<br/>
+            3. <b>ADMIN_EMAIL</b> (correo del administrador)
+            <br/><br/>
+            Después subí el archivo a tu hosting: Firebase no funciona con doble clic (file://).
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -331,19 +599,22 @@ function Login({ config }) {
     });
   };
   return (
-    <div className="login">
-      <div className="login-card">
-        {config.logoUrl ? <img className="login-logo" src={config.logoUrl} alt="logo"/> : <div className="login-emoji">🛍️</div>}
-        <h1>{config.title}</h1>
-        <p className="tagline">{config.tagline}</p>
-        <p className="login-text">{config.heroText}</p>
-        <button className="btn-google" onClick={login}>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" width="20" height="20" alt=""/>
-          Continuar con Google
-        </button>
-        <p className="login-note">Inicia sesión para comprar y guardar tus pedidos.</p>
+    <>
+      <VortexBackground/>
+      <div className="login">
+        <div className="login-card">
+          <div className="login-emoji"><InvertedCross size={64}/></div>
+          <h1>BloodLucyfer</h1>
+          <p className="tagline">{config.tagline || 'Ad portas Inferni'}</p>
+          <p className="login-text">{config.heroText}</p>
+          <button className="btn-google" onClick={login}>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" width="20" height="20" alt=""/>
+            Invocar con Google
+          </button>
+          <p className="login-note">Inicia sesión para acceder al catálogo prohibido.</p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -352,9 +623,9 @@ function Header({ user, config, isAdmin }) {
   return (
     <header className="header">
       <div className="brand">
-        {config.logoUrl ? <img src={config.logoUrl} className="brand-logo" alt=""/> : <span className="brand-emoji">🛒</span>}
-        <span className="brand-name">{config.title}</span>
-        {isAdmin && <span className="chip-admin">ADMIN</span>}
+        <InvertedCross size={34}/>
+        <span className="brand-name">BloodLucyfer</span>
+        {isAdmin && <span className="chip-admin">SEÑOR</span>}
       </div>
       <div className="user-menu">
         <img className="avatar" src={user.photoURL || ''} alt="" onClick={() => setOpen(!open)}/>
@@ -362,7 +633,7 @@ function Header({ user, config, isAdmin }) {
           <div className="dropdown">
             <div className="dd-name">{user.displayName}</div>
             <div className="dd-mail">{user.email}</div>
-            <button className="dd-logout" onClick={() => { setOpen(false); auth.signOut(); }}>Cerrar sesión</button>
+            <button className="dd-logout" onClick={() => { setOpen(false); auth.signOut(); }}>Abandonar sesión</button>
           </div>
         )}
       </div>
@@ -371,11 +642,19 @@ function Header({ user, config, isAdmin }) {
 }
 
 function BottomNav({ tab, setTab, isAdmin }) {
+  const Icon = ({ children }) => (
+    <div style={{display:'flex',alignItems:'center',justifyContent:'center'}}>
+      {children}
+    </div>
+  );
   const items = [
-    { id:'tienda',  label:'Tienda',     icon:<IconBag/>  },
-    { id:'pedidos', label:'Mis Pedidos', icon:<IconBox/>  },
+    { id:'tienda',  label:'Grimorio', icon:<InvertedCross size={22}/> },
+    { id:'pedidos', label:'Pactos',   icon:<InvertedCross size={22}/> },
   ];
-  if (isAdmin) { items.push({ id:'admin', label:'Gestión', icon:<IconGear/> }); items.push({ id:'scanner', label:'Escáner', icon:<IconScan/> }); }
+  if (isAdmin) {
+    items.push({ id:'admin', label:'Dominio', icon:<InvertedCross size={22}/> });
+    items.push({ id:'scanner', label:'Oráculo', icon:<InvertedCross size={22}/> });
+  }
   return (
     <nav className="bottom-nav">
       {items.map(i => (
@@ -392,15 +671,15 @@ function DetalleModal({ p, config, onClose, onComprar }) {
     <div className="overlay" onClick={onClose}>
       <div className="sheet" onClick={e => e.stopPropagation()}>
         <div className="sheet-handle"/>
-        {p.imagenUrl ? <img src={p.imagenUrl} className="det-img" alt=""/> : <div className="det-img ph">🛍️</div>}
+        {p.imagenUrl ? <img src={p.imagenUrl} className="det-img" alt=""/> : <div className="det-img ph"><InvertedCross size={52}/></div>}
         <div className="det-head">
           <h3>{p.nombre}</h3>
           <span className="price det-price">{money(p.precio, config)}</span>
         </div>
         {p.categoria && <span className="chip">{p.categoria}</span>}
-        <p className="det-desc">{p.descripcion || 'Sin descripción.'}</p>
-        <div className="det-stock">{p.stock > 0 ? '✔ ' + p.stock + ' unidades disponibles' : '✖ Sin stock'}</div>
-        <button className="btn btn-primary" onClick={onComprar} disabled={p.stock <= 0}>🛒 Comprar</button>
+        <p className="det-desc">{p.descripcion || 'Sin descripción profana.'}</p>
+        <div className="det-stock">{p.stock > 0 ? '✔ ' + p.stock + ' almas disponibles' : '✖ Sin stock'}</div>
+        <button className="btn btn-primary" onClick={onComprar} disabled={p.stock <= 0}>🩸 Sacrificar (Comprar)</button>
         <button className="btn btn-ghost" onClick={onClose}>Cerrar</button>
       </div>
     </div>
@@ -412,19 +691,19 @@ function TiendaView({ productos, config, onComprar, toast }) {
   return (
     <div>
       <div className="hero">
-        <h2>{config.heroTitle}</h2>
-        <p>{config.heroText}</p>
+        <h2>Ave Sanguis</h2>
+        <p>{config.heroText || 'In nomine Dei nostri Satanas Luciferi Excelsi.'}</p>
       </div>
-      <h3 className="section-title">🛒 Productos disponibles</h3>
+      <h3 className="section-title">🩸 Grimorio de Ofrendas</h3>
       {productos.length === 0 ? (
-        <div className="empty">No hay productos publicados todavía.<br/>Volvé pronto 😉</div>
+        <div className="empty">El grimorio está vacío aún.<br/>Volvé pronto, alma perdida 😉</div>
       ) : (
         <div className="prod-grid">
           {productos.map(p => (
             <div key={p.id} className="prod-card" onClick={() => setSel(p)}>
               <div className="prod-img-wrap">
-                {p.imagenUrl ? <img src={p.imagenUrl} className="prod-img" alt=""/> : <div className="prod-img ph">🛍️</div>}
-                {p.stock <= 0 && <span className="nostock">Sin stock</span>}
+                {p.imagenUrl ? <img src={p.imagenUrl} className="prod-img" alt=""/> : <div className="prod-img ph"><InvertedCross size={40}/></div>}
+                {p.stock <= 0 && <span className="nostock">Agotado</span>}
               </div>
               <div className="prod-body">
                 <div className="prod-name">{p.nombre}</div>
@@ -468,7 +747,7 @@ function CompraModal({ producto, config, user, onClose, toast }) {
       }));
       const url = pref.init_point || pref.sandbox_init_point;
       if (!url) throw new Error('Mercado Pago no devolvió un link de pago.');
-      toast('Redirigiendo a Mercado Pago…', 'info');
+      toast('Redirigiendo al portal de pago…', 'info');
       window.location.href = url;
     } catch (e) {
       toast('Error al iniciar el pago: ' + e.message, 'error');
@@ -479,17 +758,17 @@ function CompraModal({ producto, config, user, onClose, toast }) {
     <div className="overlay" onClick={busy ? null : onClose}>
       <div className="sheet" onClick={e => e.stopPropagation()}>
         <div className="sheet-handle"/>
-        <h3 className="sheet-title">🛒 Finalizar compra</h3>
+        <h3 className="sheet-title">🩸 Sellá el Pacto</h3>
         <div className="buy-resumen">
           <b>{producto.nombre}</b>
           <span className="price">{money(producto.precio, config)}</span>
         </div>
-        <label>Nombre Completo</label>
+        <label>Nombre Verdadero</label>
         <input className="input" value={nombre} onChange={e => setNombre(e.target.value)} placeholder="Como figura en tu documento"/>
         <label>DNI / Documento</label>
         <input className="input" inputMode="numeric" value={dni} onChange={e => setDni(e.target.value)} placeholder="Solo números"/>
         <button className="btn btn-primary" style={{marginTop:'18px'}} onClick={pagar} disabled={busy}>
-          {busy ? 'Conectando con Mercado Pago…' : '💳 Pagar con Mercado Pago'}
+          {busy ? 'Invocando Mercado Pago…' : '💳 Pagar con Mercado Pago'}
         </button>
         <button className="btn btn-ghost" onClick={onClose} disabled={busy}>Cancelar</button>
       </div>
@@ -506,21 +785,21 @@ function TicketModal({ pedido, config, onClose, onPagar }) {
       <div className="sheet" onClick={e => e.stopPropagation()}>
         <div className="sheet-handle"/>
         <div className="ticket-head">
-          <div className="ticket-store">{config.title}</div>
+          <div className="ticket-store">BloodLucyfer</div>
           <Badge estado={pedido.estado}/>
         </div>
         <h3 className="ticket-prod">{pedido.productoNombre}</h3>
         <div className="ticket-qr">
           {valido ? <QRImg value={QR_PREFIX + pedido.id} size={220}/> :
             <div className="qr-pending">
-              {pedido.estado === 'pendiente' ? '⏳ Esperando la acreditación del pago…' : '❌ El pago fue rechazado.'}
+              {pedido.estado === 'pendiente' ? '⏳ Esperando la consagración del pago…' : '❌ El pacto fue rechazado.'}
             </div>}
         </div>
         <div className="ticket-id">ID: {pedido.id}</div>
         <div className="ticket-data">
           <Row k="Comprador" v={pedido.nombre}/>
           <Row k="DNI" v={pedido.dni}/>
-          <Row k="Precio" v={money(pedido.precio, config)}/>
+          <Row k="Ofrenda" v={money(pedido.precio, config)}/>
           <Row k="Fecha" v={fmtFecha(pedido.fecha)}/>
           {pedido.entregadoEl && <Row k="Entregado" v={fmtFecha(pedido.entregadoEl)}/>}
         </div>
@@ -535,9 +814,9 @@ function PedidosView({ pedidos, config, onPagar }) {
   const [sel, setSel] = useState(null);
   return (
     <div>
-      <h3 className="section-title">📦 Mis Pedidos</h3>
+      <h3 className="section-title">📜 Mis Pactos</h3>
       {pedidos.length === 0 ? (
-        <div className="empty">Aún no tenés pedidos.<br/>¡Explorá la tienda! 🛍️</div>
+        <div className="empty">Aún no has sellado pactos.<br/>¡Explorá el grimorio! 🩸</div>
       ) : pedidos.map(p => (
         <div key={p.id} className="pedido-card" onClick={() => setSel(p)}>
           <div className="pedido-main">
@@ -545,7 +824,7 @@ function PedidosView({ pedidos, config, onPagar }) {
             <div className="pedido-meta">{fmtFecha(p.fecha)} · {money(p.precio, config)}</div>
             <Badge estado={p.estado}/>
             {(p.estado === 'pendiente' || p.estado === 'rechazado') &&
-              <button className="btn-mini" onClick={(e) => { e.stopPropagation(); onPagar(p); }}>💳 Pagar / Reintentar</button>}
+              <button className="btn-mini" onClick={(e) => { e.stopPropagation(); onPagar(p); }}>💳 Reintentar</button>}
           </div>
           {(p.estado === 'aprobado' || p.estado === 'entregado') &&
             <div className="pedido-qr"><QRImg value={QR_PREFIX + p.id} size={56}/></div>}
@@ -566,17 +845,17 @@ function ConfigTienda({ config, toast }) {
     setSaving(true);
     try {
       await db.collection('config').doc('store').set(f, { merge: true });
-      toast('✅ Configuración guardada. ¡Los cambios ya están aplicados!', 'success');
-    } catch (e) { toast('Error al guardar: ' + e.message, 'error'); }
+      toast('✅ Pacto guardado en las tinieblas.', 'success');
+    } catch (e) { toast('Error: ' + e.message, 'error'); }
     setSaving(false);
   };
   return (
     <div className="card pad">
-      <h4 className="card-title">🎨 Apariencia de la tienda</h4>
-      <p className="hint">Personalizá el nombre, la presentación y los colores. Los cambios se aplican al instante para todos los usuarios.</p>
-      <label>Título de la tienda</label>
+      <h4 className="card-title">🕯️ Apariencia del Reino</h4>
+      <p className="hint">Personalizá el nombre, la presentación y los colores. Los cambios se aplican al instante.</p>
+      <label>Título del Dominio</label>
       <input className="input" value={f.title} onChange={e => set('title', e.target.value)}/>
-      <label>Eslogan / subtítulo</label>
+      <label>Lema / subtítulo</label>
       <input className="input" value={f.tagline} onChange={e => set('tagline', e.target.value)}/>
       <label>Título de bienvenida (portada)</label>
       <input className="input" value={f.heroTitle} onChange={e => set('heroTitle', e.target.value)}/>
@@ -585,7 +864,7 @@ function ConfigTienda({ config, toast }) {
       <label>URL del logo (imagen)</label>
       <input className="input" placeholder="https://…" value={f.logoUrl} onChange={e => set('logoUrl', e.target.value)}/>
       <label>Banner / anuncio (opcional)</label>
-      <input className="input" placeholder="Ej: Envíos gratis esta semana 🚚" value={f.banner} onChange={e => set('banner', e.target.value)}/>
+      <input className="input" placeholder="Ej: Ofrendas gratis esta luna 🌑" value={f.banner} onChange={e => set('banner', e.target.value)}/>
       <div className="color-row">
         <div><label>Color primario</label><input type="color" value={f.primaryColor} onChange={e => set('primaryColor', e.target.value)}/></div>
         <div><label>Color acento</label><input type="color" value={f.accentColor} onChange={e => set('accentColor', e.target.value)}/></div>
@@ -593,7 +872,7 @@ function ConfigTienda({ config, toast }) {
         <div><label>Código MP</label><input className="input mini" value={f.currency} onChange={e => set('currency', e.target.value.toUpperCase())}/></div>
       </div>
       <button className="btn btn-primary" style={{marginTop:'16px'}} onClick={guardar} disabled={saving}>
-        {saving ? 'Guardando…' : '💾 Guardar cambios'}
+        {saving ? 'Invocando…' : '🩸 Guardar pacto'}
       </button>
     </div>
   );
@@ -614,26 +893,26 @@ function GestionProductos({ productos, pedidos, toast, config }) {
         precio: parseFloat(f.precio) || 0, stock: parseInt(f.stock) || 0,
         creadoEl: Date.now()
       });
-      toast('✅ Producto creado.', 'success');
+      toast('✅ Artefacto invocado.', 'success');
       setF(vacio);
     } catch (e) { toast('Error: ' + e.message, 'error'); }
     setSaving(false);
   };
   const borrar = async (p) => {
-    if (!confirm('¿Borrar permanentemente "' + p.nombre + '"?')) return;
-    try { await db.collection('productos').doc(p.id).delete(); toast('🗑️ Producto eliminado.', 'success'); }
+    if (!confirm('¿Desterrar permanentemente "' + p.nombre + '"?')) return;
+    try { await db.collection('productos').doc(p.id).delete(); toast('🗑️ Artefacto desterrado.', 'success'); }
     catch (e) { toast('Error: ' + e.message, 'error'); }
   };
   return (
     <div>
       <div className="card pad">
-        <h4 className="card-title">➕ Crear Nuevo Producto</h4>
-        <p className="hint">La API de Mercado Pago generará los links de pago automáticamente por cada venta.</p>
-        <label>Nombre del producto *</label>
+        <h4 className="card-title">➕ Invocar Nuevo Artefacto</h4>
+        <p className="hint">La API de Mercado Pago generará los links de pago automáticamente.</p>
+        <label>Nombre del artefacto *</label>
         <input className="input" value={f.nombre} onChange={e => set('nombre', e.target.value)}/>
         <div className="color-row">
-          <div style={{flex:1}}><label>Precio *</label><input className="input" type="number" min="0" value={f.precio} onChange={e => set('precio', e.target.value)}/></div>
-          <div style={{flex:1}}><label>Stock total</label><input className="input" type="number" min="0" value={f.stock} onChange={e => set('stock', e.target.value)}/></div>
+          <div style={{flex:1}}><label>Ofrenda *</label><input className="input" type="number" min="0" value={f.precio} onChange={e => set('precio', e.target.value)}/></div>
+          <div style={{flex:1}}><label>Almas en stock</label><input className="input" type="number" min="0" value={f.stock} onChange={e => set('stock', e.target.value)}/></div>
         </div>
         <label>Categoría</label>
         <input className="input" value={f.categoria} onChange={e => set('categoria', e.target.value)}/>
@@ -642,28 +921,28 @@ function GestionProductos({ productos, pedidos, toast, config }) {
         <label>Descripción</label>
         <textarea className="input" rows="3" value={f.descripcion} onChange={e => set('descripcion', e.target.value)}/>
         <button className="btn btn-primary" style={{marginTop:'14px'}} onClick={crear} disabled={saving}>
-          {saving ? 'Creando…' : 'Crear Producto'}
+          {saving ? 'Invocando…' : 'Invocar Artefacto'}
         </button>
       </div>
 
-      <h4 className="list-title">Productos publicados ({productos.length})</h4>
-      {productos.length === 0 && <div className="empty">Todavía no creaste productos.</div>}
+      <h4 className="list-title">Artefactos publicados ({productos.length})</h4>
+      {productos.length === 0 && <div className="empty">Todavía no invocaste artefactos.</div>}
       {productos.map(p => (
         <div className="admin-row" key={p.id}>
-          {p.imagenUrl ? <img className="admin-thumb" src={p.imagenUrl} alt=""/> : <div className="admin-thumb">🛍️</div>}
+          {p.imagenUrl ? <img className="admin-thumb" src={p.imagenUrl} alt=""/> : <div className="admin-thumb"><InvertedCross size={24}/></div>}
           <div className="admin-info">
             <div className="admin-nom">{p.nombre}</div>
             <div className="admin-meta">{money(p.precio, config)} · Stock: {p.stock}</div>
           </div>
-          <button className="btn-del" onClick={() => borrar(p)}>🗑</button>
+          <button className="btn-del" onClick={() => borrar(p)}>✕</button>
         </div>
       ))}
 
-      <h4 className="list-title">Pedidos recibidos ({pedidos.length})</h4>
-      {pedidos.length === 0 && <div className="empty">Aún no hay pedidos.</div>}
+      <h4 className="list-title">Pactos recibidos ({pedidos.length})</h4>
+      {pedidos.length === 0 && <div className="empty">Aún no hay pactos.</div>}
       {pedidos.slice(0, 40).map(p => (
         <div className="admin-row" key={p.id}>
-          <div className="admin-thumb">🧾</div>
+          <div className="admin-thumb">📜</div>
           <div className="admin-info">
             <div className="admin-nom">{p.productoNombre}</div>
             <div className="admin-meta">{p.nombre} · {money(p.precio, config)} · {fmtFecha(p.fecha)}</div>
@@ -679,9 +958,9 @@ function AdminView({ config, productos, pedidos, toast }) {
   const [sub, setSub] = useState('productos');
   return (
     <div>
-      <h3 className="section-title">⚙️ Panel de Administración</h3>
+      <h3 className="section-title">👑 Dominio del Señor</h3>
       <div className="subtabs">
-        <button className={sub === 'productos' ? 'subtab active' : 'subtab'} onClick={() => setSub('productos')}>Productos y pedidos</button>
+        <button className={sub === 'productos' ? 'subtab active' : 'subtab'} onClick={() => setSub('productos')}>Artefactos y Pactos</button>
         <button className={sub === 'apariencia' ? 'subtab active' : 'subtab'} onClick={() => setSub('apariencia')}>Apariencia</button>
       </div>
       {sub === 'productos'
@@ -723,7 +1002,7 @@ function ScannerView({ toast }) {
       await video.play();
       activeRef.current = true; setActivo(true);
       escanear();
-    } catch (e) { toast('❌ No se pudo acceder a la cámara. Revisá los permisos.', 'error'); }
+    } catch (e) { toast('❌ No se pudo acceder al Oráculo (cámara).', 'error'); }
   };
 
   const detener = () => {
@@ -739,26 +1018,26 @@ function ScannerView({ toast }) {
     const id = raw.indexOf(QR_PREFIX) === 0 ? raw.slice(QR_PREFIX.length) : raw.trim();
     try {
       const snap = await db.collection('pedidos').doc(id).get();
-      if (!snap.exists) return setResultado({ tipo:'invalido', titulo:'❌ Ticket inválido', msg:'Este código no existe en la base de datos.' });
+      if (!snap.exists) return setResultado({ tipo:'invalido', titulo:'❌ Pacto inexistente', msg:'Este código no existe en las tinieblas.' });
       const p = snap.data();
-      if (p.estado === 'entregado') return setResultado({ tipo:'usada', titulo:'⚠️ Ya entregado', msg:'Entregado el ' + fmtFecha(p.entregadoEl), p });
-      if (p.estado === 'pendiente') return setResultado({ tipo:'pendiente', titulo:'⏳ Pago pendiente', msg:'El pago aún no fue aprobado. No entregar.', p });
-      if (p.estado === 'rechazado') return setResultado({ tipo:'invalido', titulo:'❌ Pago rechazado', msg:'El pago fue rechazado. No entregar.', p });
+      if (p.estado === 'entregado') return setResultado({ tipo:'usada', titulo:'⚠️ Pacto ya consumado', msg:'Entregado el ' + fmtFecha(p.entregadoEl), p });
+      if (p.estado === 'pendiente') return setResultado({ tipo:'pendiente', titulo:'⏳ Ofrenda pendiente', msg:'El pago aún no fue consagrado.', p });
+      if (p.estado === 'rechazado') return setResultado({ tipo:'invalido', titulo:'❌ Ofrenda rechazada', msg:'El pacto fue roto.', p });
       await db.collection('pedidos').doc(id).update({ estado:'entregado', entregadoEl: firebase.firestore.FieldValue.serverTimestamp() });
       if (navigator.vibrate) navigator.vibrate(120);
-      setResultado({ tipo:'ok', titulo:'✅ Entrega confirmada', msg:'Pedido validado y marcado como entregado.', p });
+      setResultado({ tipo:'ok', titulo:'✅ Pacto consumado', msg:'Alma entregada al inframundo.', p });
     } catch (e) {
-      setResultado({ tipo:'invalido', titulo:'Error de red', msg:'Reintentá el escaneo.' });
+      setResultado({ tipo:'invalido', titulo:'Error del Oráculo', msg:'Reintentá el escaneo.' });
     }
   };
 
   return (
     <div>
-      <h3 className="section-title">📷 Escáner de Pedidos</h3>
-      <p className="hint">Escaneá el QR del pedido para validar y marcar la entrega automáticamente.</p>
+      <h3 className="section-title">🔮 Oráculo de Pactos</h3>
+      <p className="hint">Escaneá el QR del pacto para validar y consumar la entrega.</p>
       <div className="scanner-box">
         <video ref={videoRef} playsInline muted className={'scanner-video' + (activo ? '' : ' hidden')}/>
-        {!activo && !resultado && <div className="scanner-ph">📷<br/>La cámara se activará aquí</div>}
+        {!activo && !resultado && <div className="scanner-ph"><InvertedCross size={40}/><br/>El Oráculo se activará aquí</div>}
         {resultado && (
           <div className={'scan-result r-' + resultado.tipo}>
             <div className="scan-titulo">{resultado.titulo}</div>
@@ -770,11 +1049,11 @@ function ScannerView({ toast }) {
       <canvas ref={canvasRef} style={{display:'none'}}/>
       {activo ? (
         <div>
-          <button className="btn btn-primary" onClick={() => { setResultado(null); activeRef.current = true; escanear(); }}>🔁 Escanear otro</button>
-          <button className="btn btn-ghost" onClick={detener}>Detener cámara</button>
+          <button className="btn btn-primary" onClick={() => { setResultado(null); activeRef.current = true; escanear(); }}>🔁 Consultar otro</button>
+          <button className="btn btn-ghost" onClick={detener}>Silenciar Oráculo</button>
         </div>
       ) : (
-        <button className="btn btn-primary" onClick={activar}>📸 Activar Cámara</button>
+        <button className="btn btn-primary" onClick={activar}>🔮 Invocar Oráculo</button>
       )}
     </div>
   );
@@ -817,9 +1096,9 @@ function App() {
 
   useEffect(() => {
     const r = document.documentElement.style;
-    r.setProperty('--primary', config.primaryColor || '#6d28d9');
-    r.setProperty('--accent', config.accentColor || '#f59e0b');
-    document.title = config.title || 'Tienda Online';
+    r.setProperty('--primary', config.primaryColor || '#dc2626');
+    r.setProperty('--accent', config.accentColor || '#ef4444');
+    document.title = config.title || 'BloodLucyfer';
   }, [config]);
 
   useEffect(() => {
@@ -828,7 +1107,7 @@ function App() {
       const arr = snap.docs.map(d => Object.assign({ id: d.id }, d.data()));
       arr.sort((a, b) => (b.creadoEl || 0) - (a.creadoEl || 0));
       setProductos(arr);
-    }, e => toast('Error al cargar productos: ' + e.message, 'error'));
+    }, e => toast('Error al cargar artefactos: ' + e.message, 'error'));
   }, [user]);
 
   useEffect(() => {
@@ -877,14 +1156,14 @@ function App() {
               } catch (e) {}
             }
           }
-          toast('✅ ¡Pago aprobado! Tu pedido ya está en Mis Pedidos.', 'success');
+          toast('✅ ¡Ofrenda consagrada! Tu pacto está en Mis Pactos.', 'success');
           setTab('pedidos');
         } else if (status === 'pending' || status === 'in_process' || status === 'authorized') {
-          toast('⏳ El pago quedó pendiente. Lo verás en Mis Pedidos.', 'info');
+          toast('⏳ Ofrenda pendiente. Lo verás en Mis Pactos.', 'info');
           setTab('pedidos');
         } else {
           if (p.estado === 'pendiente') await ref.update({ estado: 'rechazado' });
-          toast('❌ El pago fue rechazado o cancelado.', 'error');
+          toast('❌ La ofrenda fue rechazada.', 'error');
         }
       } catch (e) { toast('No se pudo verificar el pago: ' + e.message, 'error'); }
     })();
@@ -892,7 +1171,7 @@ function App() {
 
   const reintentarPago = async (pedido) => {
     try {
-      toast('⏳ Generando link de pago…', 'info');
+      toast('⏳ Generando nuevo ritual de pago…', 'info');
       const pref = await crearPreferencia(buildPreferencia({
         titulo: pedido.productoNombre, precio: pedido.precio, ref: pedido.id,
         nombre: pedido.nombre, dni: pedido.dni, email: user.email, config
@@ -908,7 +1187,8 @@ function App() {
   if (!user) return (<><Login config={config}/><Toasts toasts={toasts}/></>);
 
   return (
-    <div>
+    <>
+      <VortexBackground/>
       <Header user={user} config={config} isAdmin={isAdmin}/>
       <main className="app">
         {config.banner && <div className="banner">📣 {config.banner}</div>}
@@ -920,7 +1200,7 @@ function App() {
       <BottomNav tab={tab} setTab={setTab} isAdmin={isAdmin}/>
       {comprando && <CompraModal producto={comprando} config={config} user={user} onClose={() => setComprando(null)} toast={toast}/>}
       <Toasts toasts={toasts}/>
-    </div>
+    </>
   );
 }
 
