@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-<title>Tienda Online</title>
+<title>VentiShop — Tienda Online</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -15,14 +15,10 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 input,textarea{font-family:inherit}
 img{display:block}
-
-/* SPLASH */
 .splash,.splash-boot{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
 .splash p,.splash-boot p{font-size:12px;letter-spacing:3px;font-weight:700;color:var(--muted)}
 .spinner{width:44px;height:44px;border:4px solid #e5e6f2;border-top-color:var(--primary);border-radius:50%;animation:spin .9s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* LOGIN */
 .login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(160deg,var(--primary) 0%,#171226 135%)}
 .login-card{background:#fff;border-radius:26px;padding:34px 26px;width:100%;max-width:380px;text-align:center;box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
 .login-logo{width:74px;height:74px;object-fit:contain;margin:0 auto 12px;border-radius:16px}
@@ -33,8 +29,6 @@ img{display:block}
 .btn-google{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;border-radius:14px;background:#fff;border:1.5px solid #e3e4ee;font-weight:700;font-size:15px;box-shadow:0 4px 14px rgba(20,20,40,.08)}
 .btn-google:active{transform:scale(.98)}
 .login-note{font-size:12px;color:var(--muted);margin-top:16px}
-
-/* HEADER */
 .header{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid #ececf4}
 .brand{display:flex;align-items:center;gap:9px;min-width:0}
 .brand-logo{width:34px;height:34px;border-radius:9px;object-fit:contain}
@@ -48,8 +42,6 @@ img{display:block}
 .dd-name{font-weight:700;font-size:14px}
 .dd-mail{font-size:12px;color:var(--muted);margin:2px 0 10px;word-break:break-all}
 .dd-logout{width:100%;padding:10px;border-radius:10px;background:var(--errbg);color:var(--err);font-weight:700;font-size:13px}
-
-/* LAYOUT */
 .app{max-width:560px;margin:0 auto;padding:16px 16px 110px}
 .banner{background:#fff7e0;border:1px solid #f5dfa8;color:#7a5b12;border-radius:12px;padding:10px 14px;font-size:13px;font-weight:600;margin-bottom:14px}
 .hero{background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 175%);border-radius:20px;padding:22px 20px;color:#fff;margin-bottom:18px;box-shadow:0 14px 30px -14px var(--primary)}
@@ -57,8 +49,6 @@ img{display:block}
 .hero p{font-size:13.5px;opacity:.92;line-height:1.5}
 .section-title{font-size:17px;font-weight:800;margin:6px 0 12px}
 .empty{text-align:center;color:var(--muted);font-size:14px;padding:44px 20px;background:#fff;border-radius:16px;line-height:1.8}
-
-/* PRODUCTOS */
 .prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:379px){.prod-grid{grid-template-columns:1fr}}
 .prod-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 14px rgba(25,26,35,.06);cursor:pointer;transition:transform .12s}
@@ -73,16 +63,12 @@ img{display:block}
 .prod-foot{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
 .price{font-weight:800;font-size:15px}
 .stock-lbl{font-size:11px;color:var(--muted);font-weight:600}
-
-/* BOTONES */
 .btn{display:block;width:100%;padding:14px;border-radius:14px;font-weight:800;font-size:15px;text-align:center;transition:transform .1s}
 .btn:active{transform:scale(.98)}
 .btn:disabled{opacity:.6;pointer-events:none}
 .btn-primary{background:var(--primary);color:#fff;box-shadow:0 10px 22px -10px var(--primary)}
 .btn-ghost{background:#f1f2f8;color:#4a4c5e;margin-top:9px}
 .btn-mini{margin-top:9px;font-size:12px;font-weight:700;background:var(--primary);color:#fff;padding:8px 12px;border-radius:10px}
-
-/* MODALES */
 .overlay{position:fixed;inset:0;background:rgba(12,12,20,.55);backdrop-filter:blur(3px);display:flex;align-items:flex-end;justify-content:center;z-index:100;animation:fade .18s ease}
 @keyframes fade{from{opacity:0}}
 .sheet{background:#fff;width:100%;max-width:560px;border-radius:26px 26px 0 0;padding:20px 20px calc(24px + env(safe-area-inset-bottom));max-height:90vh;overflow-y:auto;animation:up .22s cubic-bezier(.2,.8,.3,1)}
@@ -98,8 +84,6 @@ textarea.input{resize:vertical}
 .buy-resumen{display:flex;justify-content:space-between;align-items:center;background:#f7f7fc;border-radius:12px;padding:12px 14px;margin-bottom:6px}
 .buy-resumen b{font-size:14px}
 .buy-resumen .price{color:var(--primary)}
-
-/* DETALLE PRODUCTO */
 .det-img{width:100%;border-radius:16px;margin-bottom:14px;max-height:230px;object-fit:cover}
 .det-img.ph{height:150px;display:flex;align-items:center;justify-content:center;font-size:52px;background:linear-gradient(135deg,#eceafc,#f6efdc)}
 .det-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:6px}
@@ -107,8 +91,6 @@ textarea.input{resize:vertical}
 .det-price{white-space:nowrap;color:var(--primary)}
 .det-desc{font-size:13.5px;color:#555;line-height:1.55;margin:10px 0}
 .det-stock{font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:14px}
-
-/* PEDIDOS */
 .pedido-card{display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:14px;margin-bottom:10px;box-shadow:0 4px 14px rgba(25,26,35,.05);cursor:pointer}
 .pedido-main{flex:1;min-width:0}
 .pedido-nom{font-weight:700;font-size:14.5px}
@@ -120,8 +102,6 @@ textarea.input{resize:vertical}
 .badge-rech{background:var(--errbg);color:var(--err)}
 .badge-ok{background:var(--okbg);color:var(--ok)}
 .badge-used{background:var(--usedbg);color:var(--used)}
-
-/* TICKET AMPLIADO */
 .ticket-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
 .ticket-store{font-size:12px;font-weight:800;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
 .ticket-prod{font-size:19px;font-weight:800;margin-bottom:14px}
@@ -133,8 +113,6 @@ textarea.input{resize:vertical}
 .trow:last-child{border:none}
 .trow span{color:var(--muted)}
 .trow b{text-align:right;word-break:break-word}
-
-/* ADMIN */
 .subtabs{display:flex;gap:8px;margin-bottom:14px}
 .subtab{flex:1;padding:11px;border-radius:12px;background:#fff;font-weight:700;font-size:13px;color:var(--muted);box-shadow:0 3px 10px rgba(25,26,35,.05)}
 .subtab.active{background:var(--primary);color:#fff}
@@ -151,8 +129,6 @@ input[type=color]{width:64px;height:46px;border:1.5px solid #e5e6f0;border-radiu
 .admin-nom{font-weight:700;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .admin-meta{font-size:11.5px;color:var(--muted);margin-top:2px}
 .btn-del{flex-shrink:0;width:36px;height:36px;border-radius:10px;background:var(--errbg);color:var(--err);font-size:15px;display:flex;align-items:center;justify-content:center}
-
-/* SCANNER */
 .scanner-box{position:relative;border-radius:18px;overflow:hidden;background:#0d0d14;margin-bottom:14px;min-height:230px}
 .scanner-video{width:100%;display:block;max-height:56vh;object-fit:cover}
 .scanner-video.hidden{display:none}
@@ -165,14 +141,10 @@ input[type=color]{width:64px;height:46px;border:1.5px solid #e5e6f0;border-radiu
 .scan-titulo{font-size:20px;font-weight:800}
 .scan-msg{font-size:13.5px;opacity:.95}
 .scan-det{font-size:12px;background:rgba(255,255,255,.16);padding:6px 12px;border-radius:99px;margin-top:6px}
-
-/* NAV INFERIOR */
 .bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:560px;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-top:1px solid #ececf4;display:flex;z-index:50;padding:7px 6px calc(9px + env(safe-area-inset-bottom))}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;color:#9a9db0;font-size:10.5px;font-weight:700;border-radius:12px}
 .nav-item.active{color:var(--primary)}
 .nav-item svg{width:23px;height:23px}
-
-/* TOASTS */
 .toast-wrap{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:300;display:flex;flex-direction:column;gap:8px;width:min(92vw,420px)}
 .toast{color:#fff;font-size:13.5px;font-weight:600;padding:13px 16px;border-radius:13px;box-shadow:0 14px 30px -10px rgba(0,0,0,.4);animation:pop .2s ease;line-height:1.4}
 .t-success{background:var(--ok)} .t-error{background:var(--err)} .t-info{background:#1d1e2a}
@@ -181,41 +153,68 @@ input[type=color]{width:64px;height:46px;border:1.5px solid #e5e6f0;border-radiu
 <body>
 <div id="root"><div class="splash-boot"><div class="spinner"></div><p>VERIFICANDO SESIÓN...</p></div></div>
 
+<script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.7/babel.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 
 <script>
+/* ══ Vigilante de arranque: si algo falla, te lo muestra en pantalla ══ */
+window.__BOOT__ = {};
+window.addEventListener('error', function (e) { window.__BOOT__.error = e.message || 'Error desconocido'; });
+setTimeout(function () {
+  if (window.__APP_RENDERED__) return;
+  var box = document.getElementById('root'); if (!box) return;
+  var msg;
+  if (window.__BOOT__.error) msg = 'Error de JavaScript:<br><b>' + window.__BOOT__.error + '</b>';
+  else if (!window.__APP_STARTED__) msg = 'No cargaron las librerías (CDN). Revisá tu conexión / bloqueador y recargá.';
+  else msg = 'Firebase no respondió. Revisá las credenciales pegadas al inicio del archivo.';
+  box.innerHTML = '<div class="splash-boot" style="padding:24px;text-align:center">' +
+    '<div style="font-size:44px">⚠️</div>' +
+    '<p style="letter-spacing:0;font-size:15px;font-weight:700;max-width:420px;line-height:1.6">' + msg + '</p>' +
+    '<p style="letter-spacing:0;font-size:13px;color:#7b7e8f;max-width:420px;line-height:1.6">Abrí la consola (F12 → Console) para más detalle.<br>Si abriste el archivo con doble clic (file://), subilo a tu hosting: Firebase exige http/https.</p>' +
+    '<button onclick="location.reload()" style="margin-top:14px;padding:12px 22px;border-radius:12px;background:#6d28d9;color:#fff;font-weight:700">Reintentar</button></div>';
+}, 12000);
+</script>
+
+<script>
 /* ═══════════════════════════════════════════════════════════════════
    🔧 CONFIGURACIÓN — COPIÁ ESTOS 3 VALORES DE TU index.html DE VENTIFREE
+   ⚠️ Si quedan con "PEGA_AQUI", la app te lo avisará en pantalla.
    ═══════════════════════════════════════════════════════════════════ */
-const firebaseConfig = {
-  apiKey: "AIzaSyBc4DJiHoFp1gC9our2SGBek_AprkwdZ48",
-  authDomain: "entradas-ac28c.firebaseapp.com",
-  projectId: "entradas-ac28c",
-  storageBucket: "entradas-ac28c.firebasestorage.app",
-  messagingSenderId: "380401445493",
-  appId: "1:380401445493:web:9058abc2adc1a18157e63c"
+const FIREBASE_CONFIG = {
+  apiKey: "PEGA_AQUI_TU_apiKey",
+  authDomain: "PEGA_AQUI_TU_authDomain",
+  projectId: "PEGA_AQUI_TU_projectId",
+  storageBucket: "PEGA_AQUI_TU_storageBucket",
+  messagingSenderId: "PEGA_AQUI_TU_messagingSenderId",
+  appId: "PEGA_AQUI_TU_appId"
 };
-const MP_ACCESS_TOKEN = "APP_USR-2955434807999492-091915-855e6dc48a84e7b02a51fb8a9425c966-323912180";   // token de Mercado Pago
-const ADMIN_EMAIL    = "cepedademian2005@gmail.com";        // correo del administrador
+const MP_ACCESS_TOKEN = "APP_USR-PEGA_AQUI_TU_ACCESS_TOKEN";   // token de Mercado Pago
+const ADMIN_EMAIL    = "PEGA_AQUI_EL_CORREO_DEL_ADMIN";        // correo del administrador
 /* ═══════════════════════════════════════════════════════════════════ */
 </script>
 
 <script type="text/babel" data-presets="react">
 const { useState, useEffect, useRef } = React;
+window.__APP_STARTED__ = true;
 
-firebase.initializeApp(FIREBASE_CONFIG);
-const auth = firebase.auth();
-const db   = firebase.firestore();
+/* Detectar credenciales sin reemplazar y proteger la inicialización */
+const CREDS_OK = !!(FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.apiKey.indexOf('PEGA_AQUI') === -1 &&
+                    FIREBASE_CONFIG.projectId && FIREBASE_CONFIG.projectId.indexOf('PEGA_AQUI') === -1);
+let auth = null, db = null, FB_ERROR = '';
+try {
+  if (typeof firebase === 'undefined') throw new Error('Firebase no cargó (CDN bloqueado).');
+  firebase.initializeApp(FIREBASE_CONFIG);
+  auth = firebase.auth();
+  db = firebase.firestore();
+} catch (e) { FB_ERROR = e.message || String(e); }
 
 const QR_PREFIX = 'VENTISHOP:';
-
 const DEFAULT_CONFIG = {
   title: 'VentiShop', tagline: 'Tu tienda online de confianza',
   heroTitle: '¡Bienvenido!',
@@ -224,7 +223,6 @@ const DEFAULT_CONFIG = {
   currency: 'ARS', currencySymbol: '$', banner: ''
 };
 
-/* ── helpers ─────────────────────────────────────────────────────── */
 const money = (n, cfg) => ((cfg && cfg.currencySymbol) || '$') + ' ' +
   Number(n || 0).toLocaleString('es-AR', { maximumFractionDigits: 2 });
 const tsNum = t => (t && t.seconds) ? t.seconds : (typeof t === 'number' ? Math.floor(t/1000) : 0);
@@ -234,7 +232,6 @@ const fmtFecha = ts => {
   return d.toLocaleString('es-AR', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' });
 };
 
-/* ── Mercado Pago ────────────────────────────────────────────────── */
 async function mpPost(path, body) {
   const url = 'https://api.mercadopago.com' + path;
   const opts = () => ({ method:'POST',
@@ -242,7 +239,7 @@ async function mpPost(path, body) {
     body: JSON.stringify(body) });
   let r;
   try { r = await fetch(url, opts()); }
-  catch (e) { // bloqueo CORS → reintento vía proxy
+  catch (e) {
     try { r = await fetch('https://corsproxy.io/?url=' + encodeURIComponent(url), opts()); }
     catch (e2) { throw new Error('No se pudo conectar con Mercado Pago (red/CORS).'); }
   }
@@ -253,7 +250,7 @@ async function mpPost(path, body) {
 async function crearPreferencia(payload) {
   try { return await mpPost('/checkout/preferences', payload); }
   catch (e) {
-    if (payload.auto_return) { // algunos entornos rechazan auto_return → reintento sin él
+    if (payload.auto_return) {
       const p2 = Object.assign({}, payload); delete p2.auto_return;
       return await mpPost('/checkout/preferences', p2);
     }
@@ -272,14 +269,23 @@ function buildPreferencia({ titulo, precio, ref, nombre, dni, email, config }) {
   };
 }
 
-/* ── iconos ──────────────────────────────────────────────────────── */
 const IconBag  = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8h12l-1.2 12.2a1 1 0 01-1 .8H8.2a1 1 0 01-1-.8L6 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>);
 const IconBox  = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 3h12v18l-2-1.6L14 21l-2-1.6L10 21l-2-1.6L6 21V3z"/><path d="M9.5 8h5M9.5 12h5"/></svg>);
 const IconGear = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v2.8M12 18.7v2.8M2.5 12h2.8M18.7 12h2.8M5.3 5.3l2 2M16.7 16.7l2 2M18.7 5.3l-2 2M7.3 16.7l-2 2"/></svg>);
 const IconScan = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 8V6a2 2 0 012-2h2M16 4h2a2 2 0 012 2v2M20 16v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2"/><path d="M4 12h16"/></svg>);
 
-/* ── componentes básicos ─────────────────────────────────────────── */
-const Splash = () => (<div className="splash"><div className="spinner"></div><p>VERIFICANDO SESIÓN...</p></div>);
+const Splash = ({ error }) => (
+  <div className="splash">
+    <div className="spinner"></div>
+    <p>VERIFICANDO SESIÓN...</p>
+    {error && (
+      <div style={{background:'#fee2e2', color:'#b91c1c', borderRadius:'14px', padding:'14px 16px', maxWidth:'340px', fontSize:'13px', fontWeight:'600', lineHeight:'1.5', textAlign:'center'}}>
+        ⚠️ Firebase tardó demasiado en responder.<br/>
+        Revisá las credenciales al inicio del archivo y que la página esté en tu hosting (no abierta como file://). Si estás en un navegador de WhatsApp/Instagram, abrila en Chrome/Safari.
+      </div>
+    )}
+  </div>
+);
 const Toasts = ({ toasts }) => (
   <div className="toast-wrap">{toasts.map(t => <div key={t.id} className={'toast t-' + t.type}>{t.msg}</div>)}</div>
 );
@@ -302,11 +308,37 @@ function QRImg({ value, size }) {
   return <img ref={ref} width={size} height={size} className="qr-img" alt="QR"/>;
 }
 
-/* ── Login ───────────────────────────────────────────────────────── */
+/* Pantalla cuando faltan credenciales o Firebase no arranca */
+function CredsScreen({ fbError }) {
+  return (
+    <div className="login">
+      <div className="login-card">
+        <div className="login-emoji">🔧</div>
+        <h1 style={{fontSize:'20px'}}>Configuración pendiente</h1>
+        <p className="login-text" style={{textAlign:'left'}}>
+          {fbError ? <span><b>Error de Firebase:</b> {fbError}<br/><br/></span> : null}
+          Abrí este archivo en un editor y completá el bloque <b>🔧 CONFIGURACIÓN</b> con los 3 valores de tu index.html de VentiFree:
+          <br/><br/>
+          1. <b>FIREBASE_CONFIG</b> (apiKey, authDomain, projectId…)<br/>
+          2. <b>MP_ACCESS_TOKEN</b> (token de Mercado Pago)<br/>
+          3. <b>ADMIN_EMAIL</b> (correo del administrador)
+          <br/><br/>
+          Después subí el archivo a tu hosting: Firebase no funciona con doble clic (file://).
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function Login({ config }) {
   const login = () => {
     const prov = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(prov).catch(e => alert('Error al iniciar sesión: ' + e.message));
+    auth.signInWithPopup(prov).catch(e => {
+      /* en navegadores de WhatsApp/Instagram el popup suele bloquearse → redirección */
+      if (e.code === 'auth/popup-blocked' || e.code === 'auth/operation-not-supported-in-this-environment' || e.code === 'auth/cancelled-popup-request') {
+        auth.signInWithRedirect(prov).catch(e2 => alert('Error al iniciar sesión: ' + e2.message));
+      } else alert('Error al iniciar sesión: ' + e.message);
+    });
   };
   return (
     <div className="login">
@@ -325,7 +357,6 @@ function Login({ config }) {
   );
 }
 
-/* ── Header ──────────────────────────────────────────────────────── */
 function Header({ user, config, isAdmin }) {
   const [open, setOpen] = useState(false);
   return (
@@ -349,7 +380,6 @@ function Header({ user, config, isAdmin }) {
   );
 }
 
-/* ── Nav inferior ────────────────────────────────────────────────── */
 function BottomNav({ tab, setTab, isAdmin }) {
   const items = [
     { id:'tienda',  label:'Tienda',     icon:<IconBag/>  },
@@ -367,7 +397,6 @@ function BottomNav({ tab, setTab, isAdmin }) {
   );
 }
 
-/* ── Tienda ──────────────────────────────────────────────────────── */
 function DetalleModal({ p, config, onClose, onComprar }) {
   return (
     <div className="overlay" onClick={onClose}>
@@ -425,7 +454,6 @@ function TiendaView({ productos, config, onComprar, toast }) {
   );
 }
 
-/* ── Modal de compra ─────────────────────────────────────────────── */
 function CompraModal({ producto, config, user, onClose, toast }) {
   const [nombre, setNombre] = useState(user.displayName || '');
   const [dni, setDni] = useState('');
@@ -479,7 +507,6 @@ function CompraModal({ producto, config, user, onClose, toast }) {
   );
 }
 
-/* ── Mis Pedidos ─────────────────────────────────────────────────── */
 const Row = ({ k, v }) => (<div className="trow"><span>{k}</span><b>{v}</b></div>);
 
 function TicketModal({ pedido, config, onClose, onPagar }) {
@@ -539,7 +566,6 @@ function PedidosView({ pedidos, config, onPagar }) {
   );
 }
 
-/* ── Administración ──────────────────────────────────────────────── */
 function ConfigTienda({ config, toast }) {
   const [f, setF] = useState(null);
   const [saving, setSaving] = useState(false);
@@ -675,20 +701,12 @@ function AdminView({ config, productos, pedidos, toast }) {
   );
 }
 
-/* ── Escáner ─────────────────────────────────────────────────────── */
 function ScannerView({ toast }) {
   const videoRef = useRef(null), canvasRef = useRef(null), streamRef = useRef(null), rafRef = useRef(null);
   const activeRef = useRef(false);
   const [activo, setActivo] = useState(false);
   const [resultado, setResultado] = useState(null);
 
-  const detener = () => {
-    activeRef.current = false;
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    if (streamRef.current) streamRef.current.getTracks().forEach(t => t.stop());
-    streamRef.current = null;
-    setActivo(false);
-  };
   useEffect(() => () => { activeRef.current = false; if (streamRef.current) streamRef.current.getTracks().forEach(t => t.stop()); }, []);
 
   const escanear = () => {
@@ -718,8 +736,16 @@ function ScannerView({ toast }) {
     } catch (e) { toast('❌ No se pudo acceder a la cámara. Revisá los permisos.', 'error'); }
   };
 
+  const detener = () => {
+    activeRef.current = false;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    if (streamRef.current) streamRef.current.getTracks().forEach(t => t.stop());
+    streamRef.current = null;
+    setActivo(false);
+  };
+
   const procesar = async (raw) => {
-    activeRef.current = false; // pausa tras detectar
+    activeRef.current = false;
     const id = raw.indexOf(QR_PREFIX) === 0 ? raw.slice(QR_PREFIX.length) : raw.trim();
     try {
       const snap = await db.collection('pedidos').doc(id).get();
@@ -764,9 +790,9 @@ function ScannerView({ toast }) {
   );
 }
 
-/* ── App principal ───────────────────────────────────────────────── */
 function App() {
   const [booting, setBooting] = useState(true);
+  const [bootError, setBootError] = useState(false);
   const [user, setUser] = useState(null);
   const [config, setConfig] = useState(DEFAULT_CONFIG);
   const [tab, setTab] = useState('tienda');
@@ -784,13 +810,22 @@ function App() {
     setTimeout(() => setToasts(t => t.filter(x => x.id !== id)), 3800);
   };
 
-  /* sesión */
-  useEffect(() => auth.onAuthStateChanged(u => { setUser(u); setBooting(false); }), []);
+  /* sesión con vigilancia: si Firebase no responde en 10s, avisamos */
+  useEffect(() => {
+    if (!auth) { setBooting(false); return; }
+    let done = false;
+    const unsub = auth.onAuthStateChanged(u => { done = true; setUser(u); setBooting(false); });
+    const t = setTimeout(() => { if (!done) setBootError(true); }, 10000);
+    return () => { clearTimeout(t); unsub(); };
+  }, []);
 
   /* configuración de la tienda (tiempo real) */
-  useEffect(() => db.collection('config').doc('store').onSnapshot(snap => {
-    setConfig(Object.assign({}, DEFAULT_CONFIG, snap.exists ? snap.data() : {}));
-  }, () => {}), []);
+  useEffect(() => {
+    if (!db) return;
+    return db.collection('config').doc('store').onSnapshot(snap => {
+      setConfig(Object.assign({}, DEFAULT_CONFIG, snap.exists ? snap.data() : {}));
+    }, () => {});
+  }, []);
 
   /* tema + título dinámico */
   useEffect(() => {
@@ -802,7 +837,7 @@ function App() {
 
   /* catálogo */
   useEffect(() => {
-    if (!user) { setProductos([]); return; }
+    if (!db || !user) { setProductos([]); return; }
     return db.collection('productos').onSnapshot(snap => {
       const arr = snap.docs.map(d => Object.assign({ id: d.id }, d.data()));
       arr.sort((a, b) => (b.creadoEl || 0) - (a.creadoEl || 0));
@@ -812,7 +847,7 @@ function App() {
 
   /* pedidos del usuario */
   useEffect(() => {
-    if (!user) { setPedidos([]); return; }
+    if (!db || !user) { setPedidos([]); return; }
     return db.collection('pedidos').where('userId', '==', user.uid).onSnapshot(snap => {
       const arr = snap.docs.map(d => Object.assign({ id: d.id }, d.data()));
       arr.sort((a, b) => tsNum(b.fecha) - tsNum(a.fecha));
@@ -822,7 +857,7 @@ function App() {
 
   /* todos los pedidos (admin) */
   useEffect(() => {
-    if (!isAdmin) { setTodosPedidos([]); return; }
+    if (!db || !isAdmin) { setTodosPedidos([]); return; }
     return db.collection('pedidos').onSnapshot(snap => {
       const arr = snap.docs.map(d => Object.assign({ id: d.id }, d.data()));
       arr.sort((a, b) => tsNum(b.fecha) - tsNum(a.fecha));
@@ -830,12 +865,11 @@ function App() {
     }, () => {});
   }, [isAdmin]);
 
-  /* reset al cerrar sesión */
   useEffect(() => { if (!user) { setTab('tienda'); setComprando(null); } }, [user]);
 
   /* verificación automática al volver de Mercado Pago */
   useEffect(() => {
-    if (booting) return;
+    if (booting || !db) return;
     const params = new URLSearchParams(window.location.search);
     const ext = params.get('external_reference');
     const status = params.get('collection_status') || params.get('status');
@@ -873,7 +907,6 @@ function App() {
     })();
   }, [booting]);
 
-  /* reintentar pago de un pedido pendiente/rechazado */
   const reintentarPago = async (pedido) => {
     try {
       toast('⏳ Generando link de pago…', 'info');
@@ -887,7 +920,8 @@ function App() {
     } catch (e) { toast('❌ ' + e.message, 'error'); }
   };
 
-  if (booting) return <Splash/>;
+  if (!CREDS_OK || FB_ERROR || !auth) return (<><CredsScreen fbError={FB_ERROR}/><Toasts toasts={toasts}/></>);
+  if (booting) return (<><Splash error={bootError}/><Toasts toasts={toasts}/></>);
   if (!user) return (<><Login config={config}/><Toasts toasts={toasts}/></>);
 
   return (
@@ -908,6 +942,7 @@ function App() {
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+window.__APP_RENDERED__ = true;
 </script>
 </body>
 </html>
